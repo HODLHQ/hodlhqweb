@@ -33,10 +33,10 @@ const Gallery = (props) => {
                 <img src={"gallery/4.png"} className={imageClass} height="100%" layout="" />
             </div>
             <div className={imageCard}>
-                <img src={"gallery/5.jpg"} className={imageClass} height="100%" layout="" />
+                <img src={"gallery/5.png"} className={imageClass} height="100%" layout="" />
             </div>
             <div className={imageCard}>
-                <img src={"gallery/6.jpeg"} className={imageClass} height="100%" layout="" />
+                <img src={"gallery/6.png"} className={imageClass} height="100%" layout="" />
             </div>
             <div className={imageCard}>
                 <img src={"gallery/7.png"} className={imageClass} height="100%" layout="" />
@@ -51,7 +51,7 @@ const Gallery = (props) => {
                 <img src={"gallery/10.png"} className={imageClass} height="100%" layout=""  />
             </div>
             <div className={imageCard}>
-                <img src={"gallery/11.png"} className={imageClass} height="100%" layout="" />
+                <img src={"gallery/11.gif"} className={imageClass} height="100%" layout="" />
             </div>
             <div className={imageCard}>
                 <img src={"gallery/12.png"} className={imageClass} height="100%" layout="" />
@@ -75,7 +75,7 @@ const Gallery = (props) => {
                 <img src={"gallery/18.png"} className={imageClass} height="100%" layout="" />
             </div>
             <div className={imageCard}>
-                <img src={"gallery/19.gif"} className={imageClass} height="100%" layout="" />
+                <img src={"gallery/19.png"} className={imageClass} height="100%" layout="" />
             </div>
             <div className={imageCard}>
                 <img src={"gallery/20.png"} className={imageClass} height="100%" layout=""  />
@@ -111,7 +111,7 @@ const Gallery = (props) => {
                 <img src={"gallery/30.png"} className={imageClass} height="100%" layout=""  />
             </div>
             <div className={imageCard}>
-                <img src={"gallery/31.png"} className={imageClass} height="100%" layout="" />
+                <img src={"gallery/31.gif"} className={imageClass} height="100%" layout="" />
             </div>
             <div className={imageCard}>
                 <img src={"gallery/32.png"} className={imageClass} height="100%" layout="" />
@@ -129,22 +129,49 @@ const Gallery = (props) => {
                 <img src={"gallery/36.png"} className={imageClass} height="100%" layout="" />
             </div>
             <div className={imageCard}>
-                <img src={"gallery/37.gif"} className={imageClass} height="100%" layout="" />
+                <img src={"gallery/37.png"} className={imageClass} height="100%" layout="" />
             </div>
             <div className={imageCard}>
-                <img src={"gallery/38.png"} className={imageClass} height="100%" layout="" />
+                <img src={"gallery/38.jpg"} className={imageClass} height="100%" layout="" />
             </div>
             <div className={imageCard}>
-                <img src={"gallery/39.png"} className={imageClass} height="100%" layout="" />
+                <img src={"gallery/39.jpg"} className={imageClass} height="100%" layout="" />
             </div>
             <div className={imageCard}>
-                <img src={"gallery/40.png"} className={imageClass} height="100%" layout="" />
+                <img src={"gallery/40.jpeg"} className={imageClass} height="100%" layout="" />
             </div>
             <div className={imageCard}>
                 <img src={"gallery/41.png"} className={imageClass} height="100%" layout="" />
             </div>
             <div className={imageCard}>
                 <img src={"gallery/42.png"} className={imageClass} height="100%" layout="" />
+            </div>
+            <div className={imageCard}>
+                <img src={"gallery/43.png"} className={imageClass} height="100%" layout="" />
+            </div>
+            <div className={imageCard}>
+                <img src={"gallery/44.jpg"} className={imageClass} height="100%" layout="" />
+            </div>
+            <div className={imageCard}>
+                <img src={"gallery/45.png"} className={imageClass} height="100%" layout="" />
+            </div>
+            <div className={imageCard}>
+                <img src={"gallery/46.jpg"} className={imageClass} height="100%" layout="" />
+            </div>
+            <div className={imageCard}>
+                <img src={"gallery/47.jpg"} className={imageClass} height="100%" layout="" />
+            </div>
+            <div className={imageCard}>
+                <img src={"gallery/48.jpg"} className={imageClass} height="100%" layout="" />
+            </div>
+            <div className={imageCard}>
+                <img src={"gallery/49.jpg"} className={imageClass} height="100%" layout="" />
+            </div>
+            <div className={imageCard}>
+                <img src={"gallery/50.jpg"} className={imageClass} height="100%" layout="" />
+            </div>
+            <div className={imageCard}>
+                <img src={"gallery/51.jpg"} className={imageClass} height="100%" layout="" />
             </div>
         </div>
       </div>
