@@ -5,7 +5,8 @@ const ConnectButton = () => {
     const [connectionState, setConnection] = useState(-1);
     let connectText = connectionState == 0 ? "CONNECT WALLET" : "DISCONNECT"
     useEffect(()=>{
-      let state = 0;
+      window.addEventListener('load', (event) => {
+        let state = 0;
       if (globalThis.web3 !== "undefined" && globalThis.ethereum.isConnected()) {
         globalThis.web3js = new Web3(globalThis.web3.currentProvider);
           globalThis.web3js.eth.getAccounts().then((x)=>{
@@ -18,7 +19,7 @@ const ConnectButton = () => {
         });
         
       }
-      setConnection(globalThis.web3js == undefined ? state : 1);
+      });
     },[])
     const Connect = async () => {
       if (globalThis.web3 !== "undefined") {
