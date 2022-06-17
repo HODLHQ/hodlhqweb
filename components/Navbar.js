@@ -30,7 +30,7 @@ const HeaderNav = (props) => {
       <a href="https://discord.gg/hodlhq" target="_blank" rel="noreferrer" className={socialIconClass}><Image src={discordLogo} layout="" objectFit="contain" /></a>
       <a href="https://www.instagram.com/hodlhq/" target="_blank" rel="noreferrer" className={socialIconClass}><Image src={instagramLogo} layout="" objectFit="contain" /></a>
       </div>
-      <div className={"w-[200px] h-full relative flex items-center justify-start " + (mobile ? "" : "hidden")}><div className="ml-7 absolute"><ConnectButton stateTrans={props.stateTrans} stateTransSet={() => {props.stateTransSet}}/></div></div>
+      <div className={"w-[200px] h-full relative flex items-center justify-start " + (mobile ? "" : "hidden")}><div className="ml-7 absolute"><ConnectButton stateTrans={props.stateTrans} stateTransSet={props.stateTransSet}/></div></div>
       <div className={"flex-1 flex text-[#74d9ff] font-bold uppercase items-center justify-end space-x-10 " + (mobile ? "text-[10px] justify-center" : "")}>
         <Link href="/gallery">Gallery</Link>
         <div className="text-[#AAA]">Vault</div>
@@ -47,7 +47,7 @@ const HeaderNav = (props) => {
         </div>
         {/*<div>Dashboard</div>*/}
       </div>
-      <div className={"w-[220px] h-full relative flex items-center justify-start " + (mobile ? "hidden" : "")}><div className="ml-7 absolute"><ConnectButton stateTrans={props.stateTrans} stateTransSet={() => {props.stateTransSet}}/></div></div>
+      <div className={"w-[220px] h-full relative flex items-center justify-start " + (mobile ? "hidden" : "")}><div className="ml-7 absolute"><ConnectButton stateTrans={props.stateTrans} stateTransSet={props.stateTransSet}/></div></div>
     </div>
   );
 };
