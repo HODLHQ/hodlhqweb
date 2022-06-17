@@ -14,6 +14,7 @@ const ConnectButton = () => {
           connectText = "DISCONNECT"
           globalThis.accounts = x;
           state = 1
+          setConnection(1);
         });
         
       }
