@@ -2,10 +2,11 @@ import {useState, useEffect} from "react";
 import Web3 from "web3";
 
 const ConnectButton = () => {
-    const [connectionState, setConnection] = useState(-1);
+    const [connectionState, setConnection] = useState(0);
     let connectText = connectionState == 0 ? "CONNECT WALLET" : "DISCONNECT"
     useEffect(()=>{
-      window.addEventListener('load', (event) => {
+      setTimeout((event) => {
+        console.log("aa")
         let state = 0;
       if (globalThis.web3 !== "undefined" && globalThis.ethereum.isConnected()) {
         globalThis.web3js = new Web3(globalThis.web3.currentProvider);
@@ -19,7 +20,7 @@ const ConnectButton = () => {
         });
         
       }
-      });
+      },500);
     },[])
     const Connect = async () => {
       if (globalThis.web3 !== "undefined") {
