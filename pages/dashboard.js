@@ -2,10 +2,75 @@ import Head from "next/head";
 import Navbar from "components/Navbar";
 import TestImage from "public/testimage.png"
 import Image from "next/image";
-
-const Dash = (props) => {
+import {useState, useEffect} from "react";
+import Web3 from "web3";
+import {changeToMatic} from "components/WeBrew3/ChangeNetwork";
+const Dash = async (props) => {
   let a = 5;
-
+  let contractAbi = [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]
+  const [pagestate, pagestateSet] = useState(0);
+  let contractAddress = "0x6b0A49F799D7F1534227EF9AEb2DaAaC821FEAB1";
+  let polyWeb3;
+  if(pagestate == 1){
+    await changeToMatic();
+  }
+  
+  useEffect(()=>{
+    
+  },[pagestate])
   return (
     <div className="all fixed inset-0 flex">
       <Head>
@@ -14,13 +79,14 @@ const Dash = (props) => {
       </Head>
       
       <div className="w-full container m-0 h-full flex flex-col">
-        <Navbar />
+ 
+        <Navbar stateTrans={pagestate} stateTransSet={() => {pagestateSet}}/>
         <div className="dashContainer flex pt-20 pl-20">
             <div className="h-[30vw] w-[30vw] bg-[#18abe3] mr-10" style={{borderRadius: "25px",border: "#18abe3 solid 10px"}}><Image src={TestImage} style={{borderRadius: "20px"}} layout="" objectFit="contain"/></div>
             <div className="flex flex-col">
                 <div>
                     <div className="label">Name ↺</div>
-                    <div className="value">HODLCEO</div>
+                    <div className="value">{globalThis.web3js != undefined ? "aa" : "bb"}</div>
                 </div>
                 <div className="mt-10">
                     <div className="label">Twitter ↺</div>
@@ -36,6 +102,7 @@ const Dash = (props) => {
                 </div>
             </div>
         </div>
+
       </div>
     </div>
   );
