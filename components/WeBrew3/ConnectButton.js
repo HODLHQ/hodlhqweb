@@ -15,6 +15,7 @@ const ConnectButton = (props) => {
           globalThis.web3js.eth.getAccounts().then((x)=>{
           connectText = "DISCONNECT"
           globalThis.accounts = x;
+          globalThis.accounts.push(globalThis.ethereum.selectedAddress)
           state = 1
           
           setConnection(1);
@@ -27,7 +28,7 @@ const ConnectButton = (props) => {
         await globalThis.ethereum.enable()
         globalThis.web3js = new Web3(globalThis.web3.currentProvider);
         let chainId = await globalThis.web3js.eth.net.getId()
-     
+        
         if (chainId == -1) {
           alert("Please use polygon");
         } else {
@@ -35,6 +36,7 @@ const ConnectButton = (props) => {
           connectText = "DISCONNECT"
           setConnection(1)
           globalThis.accounts = accounts;
+          globalThis.accounts.push(globalThis.ethereum.selectedAddress)
         }
       } else {
         alert("Please install Metamask and use polygon");
