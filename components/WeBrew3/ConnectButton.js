@@ -10,7 +10,7 @@ const ConnectButton = (props) => {
     useEffect(()=>{
       setTimeout((event) => {
         let state = 0;
-        if (globalThis.web3 !== "undefined" && globalThis.ethereum.selectedAddress != null) {
+        if (globalThis.web3 !== "undefined" && globalThis.ethereum.selectedAddress != null && globalThis.ethereum.selectedAddress != "" && globalThis.ethereum.selectedAddress != undefined) {
           globalThis.web3js = new Web3(globalThis.web3.currentProvider);
           globalThis.web3js.eth.getAccounts().then((x)=>{
           connectText = "DISCONNECT"

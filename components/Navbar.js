@@ -18,20 +18,21 @@ const HeaderNav = (props) => {
       setInnerWidth(globalThis.innerWidth);
     })
   },[])
-  let mobile = innerHeight > innerWidth;
+  let mobile = 670 > (innerWidth-1171+707) || innerHeight > innerWidth;
   return (
-    <div className={"flex justify-between items-center "+(innerHeight > innerWidth ? "flex-wrap pb-20" : "")}>
-      <a href="../" className="mt-4 w-20">
+    <div className={"flex justify-between items-center "+(mobile ? "flex-wrap pb-0" : "")}>
+      <a href="../" className={"mt-4 w-20 "+(mobile ? "mt-0" : "")}>
         <Image src={Logo} layout="" objectFit="contain" />
       </a>
       
-      <div className={"flex text-[#74d9ff] font-bold uppercase items-center space-x-5 " + (innerHeight > innerWidth ? "ml-1" : "ml-5")}>
+      <div className={"flex text-[#74d9ff] font-bold uppercase items-center space-x-5 " + (mobile ? "ml-1" : "ml-5")}>
       <a href="https://twitter.com/HODLHQ" target="_blank" rel="noreferrer" className={socialIconClass}><Image src={twitterLogo} layout="" objectFit="contain"/></a>
       <a href="https://discord.gg/hodlhq" target="_blank" rel="noreferrer" className={socialIconClass}><Image src={discordLogo} layout="" objectFit="contain" /></a>
       <a href="https://www.instagram.com/hodlhq/" target="_blank" rel="noreferrer" className={socialIconClass}><Image src={instagramLogo} layout="" objectFit="contain" /></a>
       </div>
-      <div className={"w-[200px] h-full relative flex items-center justify-start " + (mobile ? "" : "hidden")}><div className="ml-7 absolute"><ConnectButton stateTrans={props.stateTrans} stateTransSet={props.stateTransSet}/></div></div>
-      <div className={"flex-1 flex text-[#74d9ff] font-bold uppercase items-center justify-end space-x-10 " + (mobile ? "text-[10px] justify-center" : "")}>
+      <div className={"w-[200px] relative flex items-center justify-end mr-5 " + (mobile ? "" : "hidden")}><div className="ml-7 absolute"><ConnectButton stateTrans={props.stateTrans} stateTransSet={props.stateTransSet}/></div></div>
+      <div className={mobile ? "basis-full h-0" : "hidden"}></div>
+      <div className={"flex-1 flex text-[#74d9ff] font-bold uppercase items-center justify-end space-x-[2vw] " + (mobile ? "text-[15px] justify-around flex-wrap h-[15vh] ml-10 mr-10 space-x-5" : "")}>
         <Link href="/gallery">Gallery</Link>
         
         <a target="_blank" rel="noreferrer" href="https://hodlhq.io">Shop</a>
@@ -48,9 +49,10 @@ const HeaderNav = (props) => {
         <div className="text-[#AAA]">OGs</div>
         <div className="text-[#AAA]">Guilds</div>
         <div className="text-[#AAA]">Metaverse</div>
+        <div className="text-[#AAA]">Dashboard</div>
         {/*<div>Dashboard</div>*/}
       </div>
-      <div className={"w-[220px] h-full relative flex items-center justify-start " + (mobile ? "hidden" : "")}><div className="ml-7 absolute"><ConnectButton stateTrans={props.stateTrans} stateTransSet={props.stateTransSet}/></div></div>
+      <div className={"w-[220px] h-full relative flex items-center justify-end mr-10 " + (mobile ? "hidden" : "")}><div className="ml-7 absolute"><ConnectButton stateTrans={props.stateTrans} stateTransSet={props.stateTransSet}/></div></div>
     </div>
   );
 };
