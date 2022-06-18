@@ -8,4 +8,7 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  images: {
+    domains: ['ipfs.io'],
+  },
 };

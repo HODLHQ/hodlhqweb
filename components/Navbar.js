@@ -33,9 +33,8 @@ const HeaderNav = (props) => {
       <div className={"w-[200px] h-full relative flex items-center justify-start " + (mobile ? "" : "hidden")}><div className="ml-7 absolute"><ConnectButton stateTrans={props.stateTrans} stateTransSet={props.stateTransSet}/></div></div>
       <div className={"flex-1 flex text-[#74d9ff] font-bold uppercase items-center justify-end space-x-10 " + (mobile ? "text-[10px] justify-center" : "")}>
         <Link href="/gallery">Gallery</Link>
-        <div className="text-[#AAA]">Vault</div>
+        
         <a target="_blank" rel="noreferrer" href="https://hodlhq.io">Shop</a>
-        <div>OGs</div>
         <div className="dropdown">
         {mobile ? <Link href="/collections">Collections</Link> : <a>Collections</a>}
           <div className="dropdown-content">
@@ -45,6 +44,10 @@ const HeaderNav = (props) => {
               <a target="_blank" rel="noreferrer" href="https://juicecrewnft.com">JUICE CREW</a><br/>
           </div>
         </div>
+        <div className="text-[#AAA]">Vault</div>
+        <div className="text-[#AAA]">OGs</div>
+        <div className="text-[#AAA]">Guilds</div>
+        <div className="text-[#AAA]">Metaverse</div>
         {/*<div>Dashboard</div>*/}
       </div>
       <div className={"w-[220px] h-full relative flex items-center justify-start " + (mobile ? "hidden" : "")}><div className="ml-7 absolute"><ConnectButton stateTrans={props.stateTrans} stateTransSet={props.stateTransSet}/></div></div>

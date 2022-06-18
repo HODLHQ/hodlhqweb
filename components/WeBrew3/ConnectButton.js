@@ -10,15 +10,15 @@ const ConnectButton = (props) => {
     useEffect(()=>{
       setTimeout((event) => {
         let state = 0;
-      if (globalThis.web3 !== "undefined" && globalThis.ethereum.isConnected()) {
-        globalThis.web3js = new Web3(globalThis.web3.currentProvider);
+        if (globalThis.web3 !== "undefined" && globalThis.ethereum.selectedAddress != null) {
+          globalThis.web3js = new Web3(globalThis.web3.currentProvider);
           globalThis.web3js.eth.getAccounts().then((x)=>{
           connectText = "DISCONNECT"
           globalThis.accounts = x;
           state = 1
+          
           setConnection(1);
         });
-        
       }
       },500);
     },[])
@@ -27,6 +27,7 @@ const ConnectButton = (props) => {
         await globalThis.ethereum.enable()
         globalThis.web3js = new Web3(globalThis.web3.currentProvider);
         let chainId = await globalThis.web3js.eth.net.getId()
+     
         if (chainId == -1) {
           alert("Please use polygon");
         } else {

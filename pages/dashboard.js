@@ -11,28 +11,11 @@ import 'reactjs-popup/dist/index.css';
 let name = "No name";
 let twitter = "No twitter";
 let pfp = "No pfp"
+let pfpURL = ""
 let ogid = "Not OG"
 const Dash = () => {
   let a = 5;
   let contractAbi = [
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "key",
-          "type": "string"
-        },
-        {
-          "internalType": "bool",
-          "name": "value",
-          "type": "bool"
-        }
-      ],
-      "name": "approveKey",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
     {
       "inputs": [],
       "stateMutability": "nonpayable",
@@ -58,31 +41,6 @@ const Dash = () => {
       "type": "event"
     },
     {
-      "inputs": [],
-      "name": "renounceOwnership",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "addy",
-          "type": "address"
-        },
-        {
-          "internalType": "bool",
-          "name": "value",
-          "type": "bool"
-        }
-      ],
-      "name": "setController",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
       "inputs": [
         {
           "internalType": "string",
@@ -90,43 +48,12 @@ const Dash = () => {
           "type": "string"
         },
         {
-          "internalType": "string",
+          "internalType": "bool",
           "name": "value",
-          "type": "string"
+          "type": "bool"
         }
       ],
-      "name": "setData",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "cont",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "id",
-          "type": "uint256"
-        }
-      ],
-      "name": "setPfp",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "transferOwnership",
+      "name": "approveKey",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -262,10 +189,102 @@ const Dash = () => {
       ],
       "stateMutability": "view",
       "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "addy",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "value",
+          "type": "bool"
+        }
+      ],
+      "name": "setController",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "key",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "value",
+          "type": "string"
+        }
+      ],
+      "name": "setData",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string[]",
+          "name": "keys",
+          "type": "string[]"
+        },
+        {
+          "internalType": "string[]",
+          "name": "values",
+          "type": "string[]"
+        }
+      ],
+      "name": "setDatas",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "cont",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "setPfp",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ]
   const [pagestate, pagestateSet] = useState(0);
-  let contractAddress = "0x6b0A49F799D7F1534227EF9AEb2DaAaC821FEAB1";
+  let contractAddress = "0x1de7F37D5B82e9166Aeca702871FEac1D727700E";
   let polyWeb3;
   let contract;
 
@@ -285,8 +304,25 @@ const Dash = () => {
           twitter=x+""
           contract.methods.pfpsContracts(globalThis.accounts[0]).call().then((x)=>{
             contract.methods.pfpsIds(globalThis.accounts[0]).call().then((x2)=>{
-              pfp=x+x2+"";
-              if(contentState != name+twitter+pfp) setContentState(name+twitter+pfp); 
+              pfp=x+"/"+x2;
+              contract.methods.pfpsUris(globalThis.accounts[0]).call().then((x3)=>{
+                if(x3 != ""){
+                  fetch(x3)
+                  .then((response) => response.json())
+                  .then((responseJson) => {
+                    if(contentState != name+twitter+pfp) setContentState(name+twitter+pfp);
+                    pfpURL = "https://ipfs.io/ipfs/"+responseJson.image.split('/').pop();
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
+                }else{
+                  if(contentState != name+twitter+pfp) setContentState(name+twitter+pfp);
+                }
+                
+                 
+              
+              })
             })
           })
         })
@@ -294,8 +330,10 @@ const Dash = () => {
     });
   }
 
-  const [nameInputState, setNameInputState] = useState("");
-
+  const [nameInputState, setNameInputState] = useState("Name");
+  const [twitterInputState, setTwitterInputState] = useState("Twitter");
+  const [contractAddressInputState, setContractAddressInputState] = useState("Name");
+  const [tokenIdInputState, setTokenIdInputState] = useState("Twitter");
   useEffect(()=>{
     
   },[pagestate])
@@ -310,32 +348,10 @@ const Dash = () => {
  
         <Navbar stateTrans={pagestate} stateTransSet={pagestateSet}/>
         <div className="dashContainer flex pt-20 pl-20">
-            <div className="h-[30vw] w-[30vw] bg-[#18abe3] mr-10" style={{borderRadius: "25px",border: "#18abe3 solid 10px"}}><Image src={TestImage} style={{borderRadius: "20px"}} layout="" objectFit="contain"/></div>
+            <div className="h-[30vw] w-[30vw] bg-[#18abe3] mr-10 relative" style={{borderRadius: "25px",border: "#18abe3 solid 10px"}}><Image src={pfpURL == "" ? TestImage : pfpURL} style={{borderRadius: "20px"}} layout="fill" objectFit="cover"/></div>
             <div className="flex flex-col">
                 <div>
-                <Popup trigger={<button className="label">Name ↺</button>} 
-     position="right center">
-      <input
-        id="name"
-        name="nameInput"
-        onChange={(x)=>{setNameInputState(x.target.value)}}
-        type="text"
-      />
-      <button onClick={()=>{
-        if(pagestate == 1){
-          contract = new globalThis.web3js.eth.Contract(contractAbi,contractAddress);
-          globalThis.contract = contract;
-
-            contract.methods.setData("name",nameInputState).send({
-              from: globalThis.accounts[0],
-              }).then(function (txHash) {
-                setContentState("reload\n")
-              }).catch(console.error)
-
-        }
-      }}>Send</button>
-    </Popup>
-                    
+                    <button className="label">Name ↺</button>
                     <div className="value">{name}</div>
                 </div>
                 <div className="mt-10">
@@ -349,6 +365,64 @@ const Dash = () => {
                 <div className="mt-10">
                     <div className="label">OG ID</div>
                     <div className="value">{ogid}</div>
+                </div>
+                <div className="flex space-x-10">
+                <Popup trigger={<button className="web3button whitespace-nowrap text-[#74d9ff] font-bold uppercase mt-5">Update</button>} 
+                  position="top center">
+                  <input
+                    id="name"
+                    name="nameInput"
+                    onChange={(x)=>{setNameInputState(x.target.value)}}
+                    type="text"
+                    defaultValue="Name"
+                  />
+                  <input
+                    id="twitter"
+                    name="twitterInput"
+                    onChange={(x)=>{setTwitterInputState(x.target.value)}}
+                    type="text"
+                    defaultValue="Twitter"
+                  />
+                  <button onClick={()=>{
+                    if(pagestate == 1){
+                      contract = new globalThis.web3js.eth.Contract(contractAbi,contractAddress);
+                      globalThis.contract = contract;
+                        contract.methods.setDatas(["name","twitter"],[nameInputState,twitterInputState]).send({
+                          from: globalThis.accounts[0],
+                          }).then(function (txHash) {
+                            setContentState("reload\n")
+                          }).catch(console.error)
+                        }
+                  }}>Send</button>
+                </Popup>
+                <Popup trigger={<button className="web3button whitespace-nowrap text-[#74d9ff] font-bold uppercase mt-5">Set POLYGON PFP</button>} 
+                  position="top center">
+                  <input
+                    id="ContractAddress"
+                    name="ContractAddress"
+                    onChange={(x)=>{setContractAddressInputState(x.target.value)}}
+                    type="text"
+                    defaultValue="Contract Address"
+                  />
+                  <input
+                    id="tokenId"
+                    name="tokenId"
+                    onChange={(x)=>{setTokenIdInputState(x.target.value)}}
+                    type="text"
+                    defaultValue="Token ID"
+                  />
+                  <button onClick={()=>{
+                    if(pagestate == 1){
+                      contract = new globalThis.web3js.eth.Contract(contractAbi,contractAddress);
+                      globalThis.contract = contract;
+                        contract.methods.setPfp(contractAddressInputState,BigInt(tokenIdInputState)).send({
+                          from: globalThis.accounts[0],
+                          }).then(function (txHash) {
+                            setContentState("reload\n")
+                          }).catch(console.error)
+                        }
+                  }}>Send</button>
+                </Popup>
                 </div>
             </div>
         </div>
