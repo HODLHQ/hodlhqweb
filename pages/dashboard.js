@@ -6,8 +6,12 @@ import {useState, useEffect} from "react";
 import Web3 from "web3";
 import {changeToMatic} from "components/WeBrew3/ChangeNetwork.js";
 import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
-  
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import contractAbi from "public/Abis/Dashboard.json"
+
+const contractAddress = "0x7a9A57e11CC52411F568704BE67302F6b6eFA1Ef";
+
 let name = "No name";
 let twitter = "No twitter";
 let pfp = "No pfp"
@@ -15,328 +19,63 @@ let pfpURL = ""
 let ogid = "Not OG"
 const Dash = () => {
   let a = 5;
-  let contractAbi = [
-    {
-      "inputs": [],
-      "stateMutability": "nonpayable",
-      "type": "constructor"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "previousOwner",
-          "type": "address"
-        },
-        {
-          "indexed": true,
-          "internalType": "address",
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "OwnershipTransferred",
-      "type": "event"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "key",
-          "type": "string"
-        },
-        {
-          "internalType": "bool",
-          "name": "value",
-          "type": "bool"
-        }
-      ],
-      "name": "approveKey",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "name": "approvedKeys",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "name": "controllers",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        },
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "name": "data",
-      "outputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "owner",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "name": "pfpsContracts",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "name": "pfpsIds",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "name": "pfpsUris",
-      "outputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "renounceOwnership",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "addy",
-          "type": "address"
-        },
-        {
-          "internalType": "bool",
-          "name": "value",
-          "type": "bool"
-        }
-      ],
-      "name": "setController",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "key",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "value",
-          "type": "string"
-        }
-      ],
-      "name": "setData",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string[]",
-          "name": "keys",
-          "type": "string[]"
-        },
-        {
-          "internalType": "string[]",
-          "name": "values",
-          "type": "string[]"
-        }
-      ],
-      "name": "setDatas",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "cont",
-          "type": "address"
-        },
-        {
-          "internalType": "uint256",
-          "name": "id",
-          "type": "uint256"
-        }
-      ],
-      "name": "setPfp",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address",
-          "name": "newOwner",
-          "type": "address"
-        }
-      ],
-      "name": "transferOwnership",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    }
-  ]
-  const [pagestate, pagestateSet] = useState(0);
-  let contractAddress = "0x1de7F37D5B82e9166Aeca702871FEac1D727700E";
   let polyWeb3;
   let contract;
-
-
+  const [pagestate, pagestateSet] = useState(0);
   const [contentState, setContentState] = useState("");
 
 
-
-  if(pagestate == 1){
-    changeToMatic().then(()=>{
-      contract = new globalThis.web3js.eth.Contract(contractAbi,contractAddress);
-      globalThis.contract = contract;
-      contract.methods.data(globalThis.accounts[0],"name").call().then((x)=>{
-        name=x+"";
+  useEffect(() => {
+    if(pagestate === 1){
+      changeToMatic().then(()=>{
         
-        contract.methods.data(globalThis.accounts[0],"twitter").call().then((x)=>{
-          twitter=x+""
-          contract.methods.pfpsContracts(globalThis.accounts[0]).call().then((x)=>{
-            contract.methods.pfpsIds(globalThis.accounts[0]).call().then((x2)=>{
-              pfp=x+"/"+x2;
-              contract.methods.pfpsUris(globalThis.accounts[0]).call().then((x3)=>{
-                if(x3 != ""){
-                  fetch(x3)
-                  .then((response) => response.json())
-                  .then((responseJson) => {
-                    if(contentState != name+twitter+pfp) setContentState(name+twitter+pfp);
-                    pfpURL = "https://ipfs.io/ipfs/"+responseJson.image.split('/').pop();
-                  })
-                  .catch((error) => {
-                    console.error(error);
-                  });
-                }else{
-                  if(contentState != name+twitter+pfp) setContentState(name+twitter+pfp);
-                }
-                
-                 
-              
+        console.log(globalThis.ethereum.chainId)
+        contract = new globalThis.web3js.eth.Contract(contractAbi,contractAddress);
+        globalThis.contract = contract;
+        contract.methods.data(globalThis.accounts[0],"name").call().then((x)=>{
+          name=x+"";
+          
+          contract.methods.data(globalThis.accounts[0],"twitter").call().then((x2)=>{
+            twitter=x2+""
+            contract.methods.pfpsContracts(globalThis.accounts[0]).call().then((x3)=>{
+              contract.methods.pfpsIds(globalThis.accounts[0]).call().then((x5)=>{
+                pfp=x3+"/"+x5;
+                contract.methods.pfpsUris(globalThis.accounts[0]).call().then((x4)=>{
+                  if(x4 != ""){
+                    fetch(x4)
+                    .then((response) => response.json())
+                    .then((responseJson) => {
+                      setContentState(name+twitter+pfp);
+                      pfpURL = "https://ipfs.io/ipfs/"+ (responseJson.image != undefined ? responseJson.image.substring(7) : responseJson.image_url.substring(7));
+                      console.log(pfp)
+                    })
+                    .catch((error) => {
+                      console.error(error);
+                    });
+                  }else{
+                    setContentState(name+twitter+pfp);
+                  }
+                })
               })
             })
           })
         })
-      })
-    });
-  }
+      }).catch((e)=>{
+        toast.error("Error Switching")
+        console.log("Error Switching",e)
+      });
+    }
+  }, [pagestate])
+
+  useEffect(() => {
+    pagestateSet(0)
+  }, [])
 
   const [nameInputState, setNameInputState] = useState("Name");
   const [twitterInputState, setTwitterInputState] = useState("Twitter");
   const [contractAddressInputState, setContractAddressInputState] = useState("Name");
   const [tokenIdInputState, setTokenIdInputState] = useState("Twitter");
-  useEffect(()=>{
-    
-  },[pagestate])
+
   return (
     <div className="all fixed inset-0 flex">
       <Head>
@@ -345,21 +84,21 @@ const Dash = () => {
       </Head>
       
       <div className="w-full container m-0 h-full flex flex-col">
- 
+        <ToastContainer position="bottom-left" theme={"dark"} />
         <Navbar stateTrans={pagestate} stateTransSet={pagestateSet}/>
         <div className="dashContainer flex pt-20 pl-20">
             <div className="h-[30vw] w-[30vw] bg-[#18abe3] mr-10 relative" style={{borderRadius: "25px",border: "#18abe3 solid 10px"}}><Image src={pfpURL == "" ? TestImage : pfpURL} style={{borderRadius: "20px"}} layout="fill" objectFit="cover"/></div>
             <div className="flex flex-col">
                 <div>
-                    <button className="label">Name ↺</button>
+                    <button className="label">Name</button>
                     <div className="value">{name}</div>
                 </div>
                 <div className="mt-10">
-                    <div className="label">Twitter ↺</div>
+                    <div className="label">Twitter</div>
                     <div className="value">{twitter}</div>
                 </div>
                 <div className="mt-10">
-                    <div className="label">PFP ↺</div>
+                    <div className="label">PFP</div>
                     <div className="value">{pfp}</div>
                 </div>
                 <div className="mt-10">
@@ -390,7 +129,8 @@ const Dash = () => {
                         contract.methods.setDatas(["name","twitter"],[nameInputState,twitterInputState]).send({
                           from: globalThis.accounts[0],
                           }).then(function (txHash) {
-                            setContentState("reload\n")
+                            pagestateSet(1)
+                            toast.success("Infos updated")
                           }).catch(console.error)
                         }
                   }}>Send</button>
@@ -418,11 +158,17 @@ const Dash = () => {
                         contract.methods.setPfp(contractAddressInputState,BigInt(tokenIdInputState)).send({
                           from: globalThis.accounts[0],
                           }).then(function (txHash) {
-                            setContentState("reload\n")
+                            pagestateSet(1)
+                            toast.success("PFP Updated")
                           }).catch(console.error)
                         }
                   }}>Send</button>
                 </Popup>
+                <button onClick={()=>{
+                  pagestateSet(0);
+                  pagestateSet(1);
+
+                }} className="web3button whitespace-nowrap text-[#74d9ff] font-bold uppercase mt-5">Refresh</button>
                 </div>
             </div>
         </div>

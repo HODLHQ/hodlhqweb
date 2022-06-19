@@ -2,10 +2,11 @@ import Head from "next/head";
 import Navbar from "components/Navbar";
 import TestImage from "public/testimage.png"
 import Image from "next/image";
+import {useState, useEffect} from "react";
 
 const Collections = (props) => {
   let a = 5;
-
+  const [pagestate, pagestateSet] = useState(0);
   return (
     <div className="all fixed inset-0 flex">
       <Head>
@@ -14,7 +15,7 @@ const Collections = (props) => {
       </Head>
       
       <div className="w-full container m-0 h-full flex flex-col">
-        <Navbar />
+        <Navbar stateTrans={pagestate} stateTransSet={pagestateSet}/>
         <div className="w-full h-full flex flex-col items-center justify-evenly text-[#74d9ff] font-bold uppercase text-[30px] ">
           <a target="_blank" rel="noreferrer" href="https://coolxclones.xyz">COOL X CLONES</a><br/>
           <a target="_blank" rel="noreferrer" href="https://market.decentraland.org/accounts/0x6005cdca3e6aef6aa9ff5a6301b09c770aa55783?assetType=item&section=wearables">DIAMOND WEARABLE</a><br/>

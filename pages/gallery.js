@@ -1,9 +1,9 @@
 import Head from "next/head";
 import Navbar from "components/Navbar";
 import Image from "next/image";
-
+import {useState, useEffect} from "react";
 const Gallery = (props) => {
- 
+    const [pagestate, pagestateSet] = useState(0);
     let imageCard = "h-[30vh] pr-10 mb-10"
     let imageWidth = "100%"
     let imageClass = "rounded-[25px] imageGallery"
@@ -15,7 +15,7 @@ const Gallery = (props) => {
       </Head>
       
       <div className="w-full container m-0 flex flex-col">
-        <Navbar />
+        <Navbar stateTrans={pagestate} stateTransSet={pagestateSet} />
         <div className="flex justify-around flex-wrap m-10 ">
             <div className={imageCard}>
                 <img src={"gallery/0.gif"} className={imageClass} height="100%" layout=""  />

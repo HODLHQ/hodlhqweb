@@ -1,29 +1,19 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, Component} from "react";
 import Web3 from "web3";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+class ConnectButton extends Component {
+  constructor(props) {
+    super(props);
+    this.connectText = "CONNECT WALLET"
+    //this.setConnection = this.setConnection.bind(this);
+    this.state = {connection: 0}
+    this.Disconnect = this.Disconnect.bind(this);
+    this.Connect = this.Connect.bind(this);
+  }
 
-const ConnectButton = (props) => {
-    const [connectionState, setConnection] = useState(0);
-    let connectText = connectionState == 0 ? "CONNECT WALLET" : "DISCONNECT"
-    if(props.stateTrans != undefined){
-      props.stateTransSet(connectionState);
-    }
-    useEffect(()=>{
-      setTimeout((event) => {
-        let state = 0;
-        if (globalThis.web3 !== "undefined" && globalThis.ethereum.selectedAddress != null && globalThis.ethereum.selectedAddress != "" && globalThis.ethereum.selectedAddress != undefined) {
-          globalThis.web3js = new Web3(globalThis.web3.currentProvider);
-          globalThis.web3js.eth.getAccounts().then((x)=>{
-          connectText = "DISCONNECT"
-          globalThis.accounts = x;
-          globalThis.accounts.push(globalThis.ethereum.selectedAddress)
-          state = 1
-          
-          setConnection(1);
-        });
-      }
-      },500);
-    },[])
-    const Connect = async () => {
+  async Connect() {
+    if(typeof globalThis.ethereum !== "undefined"){
       if (globalThis.web3 !== "undefined") {
         await globalThis.ethereum.enable()
         globalThis.web3js = new Web3(globalThis.web3.currentProvider);
@@ -33,8 +23,9 @@ const ConnectButton = (props) => {
           alert("Please use polygon");
         } else {
           let accounts = await globalThis.web3js.eth.getAccounts();
-          connectText = "DISCONNECT"
-          setConnection(1)
+          this.connectText = "DISCONNECT"
+          toast.success("Connected")
+          if(this.props.stateTrans != undefined ) this.props.stateTransSet(1);
           globalThis.accounts = accounts;
           globalThis.accounts.push(globalThis.ethereum.selectedAddress)
         }
@@ -42,17 +33,52 @@ const ConnectButton = (props) => {
         alert("Please install Metamask and use polygon");
       }
     }
-    
-    const Disconnect = () => {
-      connectText = "CONNECT WALLET"
-      globalThis.web3js = undefined;
-      setConnection(0)
+    else{
+      //error
     }
+  }
+  
+  Disconnect(){
+    toast.info("Disconnected")
+    this.connectText = "CONNECT WALLET"
+    globalThis.web3js = undefined;
+    if(this.props.stateTrans != undefined ) this.props.stateTransSet(0);
+  }
+  render(){
     
-    return(
-        <button className="web3button whitespace-nowrap text-[#74d9ff] font-bold uppercase" onClick={connectionState == 0 ? Connect : Disconnect}>{connectText}</button>
-    )
+    let props = this.props
+    let connectText = this.props.stateTrans == 0 ? "CONNECT WALLET" : "DISCONNECT"
 
-}
+    return(
+      <div>
+      <ToastContainer position="bottom-left" theme={"dark"} />
+        <button className="web3button whitespace-nowrap text-[#74d9ff] font-bold uppercase" onClick={this.props.stateTrans == 0 ? this.Connect : this.Disconnect}>{connectText}</button>
+        </div>
+    )
+  }
+  componentDidUpdate(prevProps, prevState) {
+    
+    if(this.props.stateTrans != undefined && this.props.stateTrans !== prevProps.stateTrans ){
+      // if( !== this.props.stateTrans){
+        this.props.stateTransSet(this.props.stateTrans);
+        console.log(this.props.stateTrans)
+      // }
+    }
+  }
+ 
+  componentDidMount() {
+    if(typeof globalThis.ethereum !== "undefined"){
+      if (this.props.stateTrans == 0 && globalThis.web3 !== "undefined" && globalThis.ethereum.selectedAddress != null && globalThis.ethereum.selectedAddress != "" && globalThis.ethereum.selectedAddress != undefined) {
+        globalThis.web3js = new Web3(globalThis.web3.currentProvider);
+        globalThis.web3js.eth.getAccounts().then((x)=>{
+          this.connectText = "DISCONNECT"
+          globalThis.accounts = x;
+          globalThis.accounts.push(globalThis.ethereum.selectedAddress)
+          this.props.stateTransSet(1);
+        });
+      }
+    }
+  }
+ }
 
 export default ConnectButton;
