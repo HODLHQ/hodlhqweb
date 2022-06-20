@@ -83,6 +83,18 @@ font-variant: normal;
 text-transform: none;
 font-weight: 700;
 }
+.titleC{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  font-weight: 700;
+  color: #ffffff;
+}
 .label{
   color: #919191;
 }

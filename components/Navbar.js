@@ -8,8 +8,8 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 
 const HeaderNav = (props) => {
-  const [innerHeight, setInnerHeight] = useState(globalThis.innerHeight);
-  const [innerWidth, setInnerWidth] = useState(globalThis.innerWidth);
+  const [innerHeight, setInnerHeight] = useState(0);
+  const [innerWidth, setInnerWidth] = useState(0);
   let socialIconClass = innerHeight > innerWidth ? "h-7 w-7" : "h-10 w-10";
 console.log(innerHeight,innerWidth)
   const setScreenLengths = useCallback(() => {
@@ -19,6 +19,7 @@ console.log(innerHeight,innerWidth)
 
   useEffect(() => {
     window.addEventListener("resize", setScreenLengths);
+    setScreenLengths()
     return () => {
       window.removeEventListener("resize", setScreenLengths)
     };
@@ -28,7 +29,7 @@ console.log(innerHeight,innerWidth)
     <div
       className={
         "flex h-24 justify-between items-center " +
-        (mobile ? "flex-wrap pb-0" : "")
+        (mobile ? "flex-wrap pb-0 mb-10" : "")
       }
     >
       <a href="../" className={"w-20 " + (mobile ? "mt-0" : "")}>
@@ -94,12 +95,9 @@ console.log(innerHeight,innerWidth)
           Shop
         </a>
         <div className="dropdown">
-          {mobile ? (
-            <Link href="/collections">Collections</Link>
-          ) : (
-            <a>Collections</a>
-          )}
-          <div className="dropdown-content">
+          <a>Collections</a>    
+          <div className={"dropdown-content "  +
+        (mobile ? "mt-9" : "")}>
             <a target="_blank" rel="noreferrer" href="https://coolxclones.xyz">
               COOL X CLONES
             </a>
@@ -126,10 +124,33 @@ console.log(innerHeight,innerWidth)
             <br />
           </div>
         </div>
-        <div className="text-[#AAA]">Vault</div>
+        <Link href="/vault">Vault</Link>
         <div className="text-[#AAA]">OGs</div>
         <div className="text-[#AAA]">Guilds</div>
-        <div className="text-[#AAA]">Metaverse</div>
+        <div className="dropdown">
+          <a>Metaverse</a>    
+          <div className="dropdown-content">
+            <a target="_blank" rel="noreferrer" href="https://play.decentraland.org/?realm=dg&position=149%2C-72&island=I1w67w">
+              Decentraland
+            </a>
+            <br />
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://oncyber.io/hodlhqvault"
+            >
+              OnCyber
+            </a>
+            <br />
+            <a
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#AAA]"
+            >
+              Minecraft
+            </a>
+          </div>
+        </div>
         <Link href="/dashboard">Dashboard</Link>
         {/*<div>Dashboard</div>*/}
       </div>

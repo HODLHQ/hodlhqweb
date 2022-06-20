@@ -2,7 +2,7 @@ import Head from "next/head";
 import Navbar from "components/Navbar";
 import TestImage from "public/testimage.png"
 import Image from "next/image";
-import {useState, useEffect} from "react";
+import {useState, useEffect,useCallback} from "react";
 import Web3 from "web3";
 import {changeToMatic} from "components/WeBrew3/ChangeNetwork.js";
 import Popup from 'reactjs-popup';
@@ -71,13 +71,27 @@ const Dash = () => {
     pagestateSet(0)
   }, [])
 
+  const [innerSize, setInnerSize] = useState([0,0]);
+  
+  const setScreenLengths = useCallback(() => {
+      setInnerSize([globalThis.innerHeight,globalThis.innerWidth]);
+  }, [])
+  let mobile = 1134 > innerSize[1] || innerSize[0] > innerSize[1];
+  useEffect(() => {
+    window.addEventListener("resize", setScreenLengths);
+    setScreenLengths()
+    return () => {
+      window.removeEventListener("resize", setScreenLengths)
+    };
+  }, []);
+
   const [nameInputState, setNameInputState] = useState("Name");
   const [twitterInputState, setTwitterInputState] = useState("Twitter");
   const [contractAddressInputState, setContractAddressInputState] = useState("Name");
   const [tokenIdInputState, setTokenIdInputState] = useState("Twitter");
 
   return (
-    <div className="all fixed inset-0 flex">
+    <div className="all inset-0 flex">
       <Head>
         <title>HODLHQ Dashboard</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -86,8 +100,9 @@ const Dash = () => {
       <div className="w-full container m-0 h-full flex flex-col">
         <ToastContainer position="bottom-left" theme={"dark"} />
         <Navbar stateTrans={pagestate} stateTransSet={pagestateSet}/>
-        <div className="dashContainer flex pt-20 pl-20">
-            <div className="h-[30vw] w-[30vw] bg-[#18abe3] mr-10 relative" style={{borderRadius: "25px",border: "#18abe3 solid 10px"}}><Image src={pfpURL == "" ? TestImage : pfpURL} style={{borderRadius: "20px"}} layout="fill" objectFit="cover"/></div>
+        <div className={"dashContainer flex pt-20 " +
+        (mobile ? "flex-col pl-5 pb-10" : "pl-20 ")}>
+            <div className="h-[30vw] w-[30vw] bg-[#18abe3] mr-10 mb-10 relative" style={{borderRadius: "25px",border: "#18abe3 solid 10px"}}><Image src={pfpURL == "" ? TestImage : pfpURL} style={{borderRadius: "20px"}} layout="fill" objectFit="cover"/></div>
             <div className="flex flex-col">
                 <div>
                     <button className="label">Name</button>
