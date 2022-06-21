@@ -41,6 +41,7 @@ const Vault = (props) => {
             <div className="basis-full"></div>
             <OGCard 
             id={15}
+            nolink={true}
             size={mobile ? heightCard : undefined}
             />
         </div>

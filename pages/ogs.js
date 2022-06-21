@@ -5,9 +5,9 @@ import {useState, useEffect, useCallback} from "react";
 import Link from "next/link";
 import OGCard from "components/WeBrew3/OGCard";
 import NFTCard from "components/WeBrew3/NFTCard";
-const Vault = (props) => {
+const OGs = (props) => {
     const [pagestate, pagestateSet] = useState(0);
-    const [innerSize, setInnerSize] = useState([globalThis.innerHeight+1,globalThis.innerWidth+1]);
+    const [innerSize, setInnerSize] = useState([0,0]);
     
     const setScreenLengths = useCallback(() => {
         setInnerSize([globalThis.innerHeight,globalThis.innerWidth]);
@@ -57,7 +57,11 @@ const Vault = (props) => {
             </div>
             <div className="basis-full"></div>
             <OGCard 
-            id={15}
+            id={1}
+            size={mobile ? "25" : "30"}
+            />
+            <OGCard 
+            id={14}
             size={mobile ? "25" : "30"}
             />
             <OGCard 
@@ -70,4 +74,4 @@ const Vault = (props) => {
   );
 };
 
-export default Vault;
+export default OGs;

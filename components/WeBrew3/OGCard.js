@@ -29,7 +29,7 @@ const OGCard = (props) => {
         border: "4px solid #ffffff"
     }}>
         <div className="h-[80%] mt-3 mb-2 ml-3 mr-3">
-            <a href={"og/"+name}  target="_blank"
+            <a href={props.nolink != undefined ? "" : "og/"+name}  target="_blank"
           rel="noreferrer"><img src={pfp} className="h-[100%] rounded-[13px]"></img></a>
         </div>
         <div style={{fontSize:  0.07* parseInt(size) +"vh"}} className={"value mr-2 ml-2"}>{name}</div>

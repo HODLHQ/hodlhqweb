@@ -2,9 +2,24 @@ import Head from "next/head";
 import Navbar from "components/Navbar";
 import Bg from "components/Bg";
 import Persos from "components/Persos";
-import {useState, useEffect} from "react";
+import {useState, useEffect,useCallback} from "react";
 const Home = (props) => {
   const [pagestate, pagestateSet] = useState(0);
+  const [innerSize, setInnerSize] = useState([globalThis.innerHeight+1,globalThis.innerWidth+1]);
+
+  const setScreenLengths = useCallback(() => {
+    setInnerSize([globalThis.innerHeight,globalThis.innerWidth]);
+}, [])
+let mobile = 1134 > innerSize[1] || innerSize[0] > innerSize[1];
+console.log(mobile)
+useEffect(() => {
+  window.addEventListener("resize", setScreenLengths);
+  setScreenLengths()
+  return () => {
+    window.removeEventListener("resize", setScreenLengths)
+  };
+}, []);
+
   return (
     <div className="all fixed inset-0 flex overflow-auto">
       <Head>

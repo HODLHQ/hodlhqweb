@@ -8,8 +8,8 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 
 const HeaderNav = (props) => {
-  const [innerHeight, setInnerHeight] = useState(globalThis.innerHeight+1);
-  const [innerWidth, setInnerWidth] = useState(globalThis.innerWidth+1);
+  const [innerHeight, setInnerHeight] = useState(0);
+  const [innerWidth, setInnerWidth] = useState(0);
   let socialIconClass = innerHeight > innerWidth ? "h-7 w-7" : "h-10 w-10";
 console.log(innerHeight,innerWidth)
   const setScreenLengths = useCallback(() => {
@@ -19,7 +19,8 @@ console.log(innerHeight,innerWidth)
 
   useEffect(() => {
     window.addEventListener("resize", setScreenLengths);
-    setScreenLengths()
+    setInnerHeight(globalThis.innerHeight);
+      setInnerWidth(globalThis.innerWidth);
     return () => {
       window.removeEventListener("resize", setScreenLengths)
     };
@@ -29,7 +30,7 @@ console.log(innerHeight,innerWidth)
     <div
       className={
         "flex h-24 justify-between items-center " +
-        (mobile ? "flex-wrap pb-0 mb-10" : "")
+        (mobile ? "flex-wrap pb-0 mb-20" : "")
       }
     >
       <a href="../" className={"w-20 " + (mobile ? "mt-0" : "")}>

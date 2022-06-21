@@ -36,11 +36,11 @@ const Dash = () => {
           name=x+"";
           
           contract.methods.data(globalThis.accounts[0],"twitter").call().then((x2)=>{
-            twitter=x2+""
+            if(x2 != "") twitter=x2+""
             contract.methods.data(globalThis.accounts[0],"pfp").call().then((x3)=>{
-              pfp=x3;
+              if(x3 != "") pfp=x3;
                 contract.methods.ogID(globalThis.accounts[0]).call().then((x4)=>{
-                  ogid=x4;
+                  if(ogid != 0) ogid = x4;
                     if(x3 != "" && x3 != "Pfp Ipfs Cid") pfpURL = "https://ipfs.io/ipfs/"+ (x3);
                     console.log(pfp)
                     setContentState(name+twitter+pfp+ogid)
@@ -59,7 +59,7 @@ const Dash = () => {
     pagestateSet(0)
   }, [])
 
-  const [innerSize, setInnerSize] = useState([globalThis.innerHeight+1,globalThis.innerWidth+1]);
+  const [innerSize, setInnerSize] = useState([0,0]);
   
   const setScreenLengths = useCallback(() => {
       setInnerSize([globalThis.innerHeight,globalThis.innerWidth]);
