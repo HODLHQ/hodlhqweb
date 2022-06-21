@@ -5,7 +5,7 @@ import Persos from "components/Persos";
 import {useState, useEffect,useCallback} from "react";
 const Home = (props) => {
   const [pagestate, pagestateSet] = useState(0);
-  const [innerSize, setInnerSize] = useState([globalThis.innerHeight+1,globalThis.innerWidth+1]);
+  const [innerSize, setInnerSize] = useState([0,0]);
 
   const setScreenLengths = useCallback(() => {
     setInnerSize([globalThis.innerHeight,globalThis.innerWidth]);

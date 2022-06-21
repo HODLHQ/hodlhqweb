@@ -4,13 +4,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import contractAbi from "public/Abis/Dashboard.json"
 const contractAddress = "0xf9e67C8AA7E08B8872e0C28CB403a29Db27e9864";
-let name = "";
-let pfp = "";
+
 const OGCard = (props) => {
     const [pagestate, pagestateSet] = useState(["",""]);
     let size = props.size !== undefined ? props.size : "50";
-    const web3I = new Web3(new Web3.providers.HttpProvider('https://rpc-mainnet.maticvigil.com/v1/6cdc25ca4b20d50823b5fc4a37b6d4029d941956'));
-    const contract = new web3I.eth.Contract(contractAbi,contractAddress);
+    let name = "";
+    let pfp = "";
+    let web3I = new Web3(new Web3.providers.HttpProvider('https://rpc-mainnet.maticvigil.com/v1/6cdc25ca4b20d50823b5fc4a37b6d4029d941956'));
+    let contract = new web3I.eth.Contract(contractAbi,contractAddress);
     useEffect(()=>{
         contract.methods.OGs(props.id).call().then((x2)=>{
         contract.methods.data(x2,"name").call().then((x)=>{
