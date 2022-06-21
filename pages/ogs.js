@@ -39,11 +39,11 @@ const OGs = (props) => {
             <div className={"flex justify-start flex-wrap mr-10 mb-10 mt-5 " + (mobile ? " ml-5" : "ml-10")}>
             <div className={titleStyle+" mb-5 text-[30px]"}>OGs</div>
             <div className="basis-full"></div>
-            <div className="flex justify-evenlty">
-              <div className={titleStyle+" mb-5 text-[10px]"}>OG&apos;s are members of the web3 community that took it upon themselves to support the HQ and those within it.<br/> Currently you can only get this rank by buying our 1 of 100 DCL hat that comes with a physical version,<br/> or by earning it by buidling!</div>
+            <div className="flex mb-10 justify-evenlty">
+              <div className={titleStyle+" text-[10px]"}>OG&apos;s are members of the web3 community that took it upon themselves to support the HQ and those within it.<br/> Currently you can only get this rank by buying our 1 of 100 DCL hat that comes with a physical version,<br/> or by earning it by buidling!</div>
               <div className="relative ml-10">
                 <div className={(mobile ? "h-[15vh] w-[15vh]" : "absolute h-[20vh] w-[20vh]") } style={{
-                  top: "-60%",
+                  top: "-80%",
                 }}>
                   <NFTCard 
                   content="https://lh3.googleusercontent.com/nXUYIPNgw5GOIwlJAPi9-BwyMlc820Z8b6BISXdld-nvgGO2E6mrsLoVdKRfmuiad-wz02RPo9SpDY2bYcphBbjJLOP9h0a2q2B8qA=w600"
@@ -58,6 +58,54 @@ const OGs = (props) => {
             <div className="basis-full"></div>
             <OGCard 
             id={1}
+            size={mobile ? "25" : "30"}
+            />
+            <OGCard 
+            id={2}
+            size={mobile ? "25" : "30"}
+            />
+            <OGCard 
+            id={3}
+            size={mobile ? "25" : "30"}
+            />
+            <OGCard 
+            id={4}
+            size={mobile ? "25" : "30"}
+            />
+            <OGCard 
+            id={5}
+            size={mobile ? "25" : "30"}
+            />
+            <OGCard 
+            id={6}
+            size={mobile ? "25" : "30"}
+            />
+            <OGCard 
+            id={7}
+            size={mobile ? "25" : "30"}
+            />
+            <OGCard 
+            id={8}
+            size={mobile ? "25" : "30"}
+            />
+            <OGCard 
+            id={9}
+            size={mobile ? "25" : "30"}
+            />
+            <OGCard 
+            id={10}
+            size={mobile ? "25" : "30"}
+            />
+            <OGCard 
+            id={11}
+            size={mobile ? "25" : "30"}
+            />
+            <OGCard 
+            id={12}
+            size={mobile ? "25" : "30"}
+            />
+            <OGCard 
+            id={13}
             size={mobile ? "25" : "30"}
             />
             <OGCard 
