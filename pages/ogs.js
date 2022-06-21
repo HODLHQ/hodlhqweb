@@ -58,54 +58,80 @@ const OGs = (props) => {
             <div className="basis-full"></div>
             <OGCard 
             id={1}
+            name={"HODLCEO"}
+            image={"https://ipfs.io/ipfs/QmNeax2bfLmqBQziXA7zA7UvH8NQKjRFKEA2j2ZdHearBb/hodlceo.jpg"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
             id={2}
+            name={"ArmenTsatou"}
+            image={"https://lh3.googleusercontent.com/FK38wYeHbIrql79VCVsuIe6qUJ90nNX2Pl39smU2pfi1G6wGIwqQy2aQSWDSASFKHz7PJ2c9s9Z6hffoZOoZ3icULCZQeCrcoZ-zylU=w600"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
             id={3}
+            name={"MetaGing"}
+            image={"https://ipfs.io/ipfs/QmbfuMdX9qiMmKVcDiWmQHYg6sk5yfmoAh7fYbQcvWd9gd/4316.png"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
             id={4}
+            name={"BigMouth"}
+            image={"https://pbs.twimg.com/profile_images/1514623036045017106/YLoOStsz_400x400.jpg"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
             id={5}
+            name={"MichiTodd"}
+            image={"https://lh3.googleusercontent.com/ndkdLyq68Ol1WE-E_tJ0aqDjyqtULWWK7BhSA0PqGK1vR4C6BYB79iT6d2NpCt9muI8JOdGQWPb407fmjt39zO21xpsj4mghOaeLrm4=w600"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
             id={6}
+            name={"Adam"}
+            image={"https://lh3.googleusercontent.com/MS1ZC5SETGLHJGqhdmfaNKw1YuK-MghxZFuwcsJH4g9YGn_I95XVcjGLMajqUN-IapuZ9Gb_hBCHKau7BT5shVMsyj-ksWcMQVi5X4c=w600"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
             id={7}
+            name={"DewmOne"}
+            image={"https://ipfs.io/ipfs/QmNeax2bfLmqBQziXA7zA7UvH8NQKjRFKEA2j2ZdHearBb/dewm.jpg"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
             id={8}
+            name={"xCryptoBro"}
+            image={"https://ipfs.io/ipfs/QmNeax2bfLmqBQziXA7zA7UvH8NQKjRFKEA2j2ZdHearBb/xcryptobro.jpg"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
             id={9}
+            name={"Shadow_weave"}
+            image={"https://lh3.googleusercontent.com/i0Cyfmc3Hn2M0SjPch7p8V6EIeSNQXkUDUwLF3RDjlZ_Ahkmd6G8VIheMHbaglFjgioDr3NHxflKNOfkQVqmP2-p6wy2QaG4g2CozX8=w600"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
             id={10}
+            name={"TayVP"}
+            image={"https://lh3.googleusercontent.com/bK4gAbKMzfCVd82QA9squBRDyD7v-h74z_C1NZOHVbLQFQj2vs7ustd8JIrpHK4jmdiOW9p_NHFbiuX7jwL2994PtQzpG5EpHBjlcME=w600"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
             id={11}
+            name={"0xCryptonian"}
+            image={"https://lh3.googleusercontent.com/zRjhdbUedm1tXOZo1Jmiz_IF3d5uqvrDc2h4s2e0Ra3S8h4vHqkH3oQ380lu3yVb7hEF7UcLb2FsPuBp6l6PX9gmkNw0gdPm0KmpEnY=w600"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
             id={12}
+            name={"Artfigure"}
+            image={"https://lh3.googleusercontent.com/fs7PV_LuFfLNe50o-pnkwZMKXj1I5WbyaxuUtbGj8r1sH5bsnsq2CzUV-kKGP5c0EIZ2f4FkpTg2y4UsLXKfiuG0gKJAajR8DLqUeQ=w600"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
             id={13}
+            name={"Tcvdh"}
+            image={"https://lh3.googleusercontent.com/oRv-A3iFd4kiWkuI2qSEX4z6CeL5PlQ_kQqURAvDcKKSd9NvIeHxF8alzbDOsyAFu2N2EMM1mfhXA2vemafdJ2HslmOHsop6MDfIltw=w600"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
@@ -114,6 +140,12 @@ const OGs = (props) => {
             />
             <OGCard 
             id={15}
+            size={mobile ? "20" : "30"}
+            />
+            <OGCard 
+            id={16}
+            name={"DreamDCL"}
+            image={"https://lh3.googleusercontent.com/aN45UYTibCySoVTnBFS5XsoCxD7pwSrVArIUQGC6aOVwnBRwnZxAIHGBM2pkbfVydwGV6sG0nIbYQ_k3ImHACv58BEovcFbayUPW=w600"}
             size={mobile ? "20" : "30"}
             />
         </div>

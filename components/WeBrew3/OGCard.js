@@ -31,9 +31,9 @@ const OGCard = (props) => {
     }}>
         <div className="h-[80%] mt-3 mb-2 ml-3 mr-3">
             <a href={props.nolink != undefined ? "" : "og/"+pagestate[0]}  target="_blank"
-          rel="noreferrer"><img src={pagestate[1]} className="h-[100%] rounded-[13px]"></img></a>
+          rel="noreferrer"><img src={props.image != undefined ? props.image : pagestate[1]} className="h-[100%] rounded-[13px]"></img></a>
         </div>
-        <div style={{fontSize:  0.07* parseInt(size) +"vh"}} className={"value mr-2 ml-2"}>{pagestate[0]}</div>
+        <div style={{fontSize:  0.07* parseInt(size) +"vh"}} className={"value mr-2 ml-2"}>{props.name != undefined ? props.name : pagestate[0]}</div>
     </div>
     )
  }  

@@ -50,7 +50,7 @@ html,body{
 .dropdown-content {
   display: none;
   position: absolute;
-  
+  transition: 0.25s;
   min-width: 170px;
   padding: 10px 0px;
   z-index: 50;
