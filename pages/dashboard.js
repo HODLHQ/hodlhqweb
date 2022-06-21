@@ -3,14 +3,14 @@ import Navbar from "components/Navbar";
 import TestImage from "public/testimage.png"
 import Image from "next/image";
 import {useState, useEffect,useCallback} from "react";
-import Web3 from "web3";
+
 import {changeToMatic} from "components/WeBrew3/ChangeNetwork.js";
 import Popup from 'reactjs-popup';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import contractAbi from "public/Abis/Dashboard.json"
-
-const contractAddress = "0x7a9A57e11CC52411F568704BE67302F6b6eFA1Ef";
+import Web3 from "web3";
+const contractAddress = "0xf9e67C8AA7E08B8872e0C28CB403a29Db27e9864";
 
 let name = "No name";
 let twitter = "No twitter";
@@ -37,29 +37,17 @@ const Dash = () => {
           
           contract.methods.data(globalThis.accounts[0],"twitter").call().then((x2)=>{
             twitter=x2+""
-            contract.methods.pfpsContracts(globalThis.accounts[0]).call().then((x3)=>{
-              contract.methods.pfpsIds(globalThis.accounts[0]).call().then((x5)=>{
-                pfp=x3+"/"+x5;
-                contract.methods.pfpsUris(globalThis.accounts[0]).call().then((x4)=>{
-                  if(x4 != ""){
-                    fetch(x4)
-                    .then((response) => response.json())
-                    .then((responseJson) => {
-                      setContentState(name+twitter+pfp);
-                      pfpURL = "https://ipfs.io/ipfs/"+ (responseJson.image != undefined ? responseJson.image.substring(7) : responseJson.image_url.substring(7));
-                      console.log(pfp)
-                    })
-                    .catch((error) => {
-                      console.error(error);
-                    });
-                  }else{
-                    setContentState(name+twitter+pfp);
-                  }
+            contract.methods.data(globalThis.accounts[0],"pfp").call().then((x3)=>{
+              pfp=x3;
+                contract.methods.ogID(globalThis.accounts[0]).call().then((x4)=>{
+                  ogid=x4;
+                    if(x3 != "" && x3 != "Pfp Ipfs Cid") pfpURL = "https://ipfs.io/ipfs/"+ (x3);
+                    console.log(pfp)
+                    setContentState(name+twitter+pfp+ogid)
                 })
               })
             })
           })
-        })
       }).catch((e)=>{
         toast.error("Error Switching")
         console.log("Error Switching",e)
@@ -71,7 +59,7 @@ const Dash = () => {
     pagestateSet(0)
   }, [])
 
-  const [innerSize, setInnerSize] = useState([0,0]);
+  const [innerSize, setInnerSize] = useState([globalThis.innerHeight+1,globalThis.innerWidth+1]);
   
   const setScreenLengths = useCallback(() => {
       setInnerSize([globalThis.innerHeight,globalThis.innerWidth]);
@@ -87,20 +75,19 @@ const Dash = () => {
 
   const [nameInputState, setNameInputState] = useState("Name");
   const [twitterInputState, setTwitterInputState] = useState("Twitter");
-  const [contractAddressInputState, setContractAddressInputState] = useState("Name");
-  const [tokenIdInputState, setTokenIdInputState] = useState("Twitter");
+  const [cidInputState, setCidInputState] = useState("Name");
 
   return (
-    <div className="all inset-0 flex">
+    <div className="all h-full inset-0 flex">
       <Head>
         <title>HODLHQ Dashboard</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       
-      <div className="w-full container m-0 h-full flex flex-col">
+      <div className="w-full container m-0 min-h-[100vh] flex flex-col">
         <ToastContainer position="bottom-left" theme={"dark"} />
         <Navbar stateTrans={pagestate} stateTransSet={pagestateSet}/>
-        <div className={"dashContainer flex pt-20 " +
+        <div className={"dashContainer flex pt-20 h-full " +
         (mobile ? "flex-col pl-5 pb-10" : "pl-20 ")}>
             <div className="h-[30vw] w-[30vw] bg-[#18abe3] mr-10 mb-10 relative" style={{borderRadius: "25px",border: "#18abe3 solid 10px"}}><Image src={pfpURL == "" ? TestImage : pfpURL} style={{borderRadius: "20px"}} layout="fill" objectFit="cover"/></div>
             <div className="flex flex-col">
@@ -137,11 +124,18 @@ const Dash = () => {
                     type="text"
                     defaultValue="Twitter"
                   />
+                  <input
+                    id="cid"
+                    name="cidInput"
+                    onChange={(x)=>{setCidInputState(x.target.value)}}
+                    type="text"
+                    defaultValue="Pfp Ipfs Cid"
+                  />
                   <button onClick={()=>{
                     if(pagestate == 1){
                       contract = new globalThis.web3js.eth.Contract(contractAbi,contractAddress);
                       globalThis.contract = contract;
-                        contract.methods.setDatas(["name","twitter"],[nameInputState,twitterInputState]).send({
+                        contract.methods.setDatas(["name","twitter","pfp"],[nameInputState,twitterInputState,cidInputState]).send({
                           from: globalThis.accounts[0],
                           }).then(function (txHash) {
                             pagestateSet(1)
@@ -150,40 +144,6 @@ const Dash = () => {
                         }
                   }}>Send</button>
                 </Popup>
-                <Popup trigger={<button className="web3button whitespace-nowrap text-[#74d9ff] font-bold uppercase mt-5">Set POLYGON PFP</button>} 
-                  position="top center">
-                  <input
-                    id="ContractAddress"
-                    name="ContractAddress"
-                    onChange={(x)=>{setContractAddressInputState(x.target.value)}}
-                    type="text"
-                    defaultValue="Contract Address"
-                  />
-                  <input
-                    id="tokenId"
-                    name="tokenId"
-                    onChange={(x)=>{setTokenIdInputState(x.target.value)}}
-                    type="text"
-                    defaultValue="Token ID"
-                  />
-                  <button onClick={()=>{
-                    if(pagestate == 1){
-                      contract = new globalThis.web3js.eth.Contract(contractAbi,contractAddress);
-                      globalThis.contract = contract;
-                        contract.methods.setPfp(contractAddressInputState,BigInt(tokenIdInputState)).send({
-                          from: globalThis.accounts[0],
-                          }).then(function (txHash) {
-                            pagestateSet(1)
-                            toast.success("PFP Updated")
-                          }).catch(console.error)
-                        }
-                  }}>Send</button>
-                </Popup>
-                <button onClick={()=>{
-                  pagestateSet(0);
-                  pagestateSet(1);
-
-                }} className="web3button whitespace-nowrap text-[#74d9ff] font-bold uppercase mt-5">Refresh</button>
                 </div>
             </div>
         </div>

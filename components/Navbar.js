@@ -8,8 +8,8 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 
 const HeaderNav = (props) => {
-  const [innerHeight, setInnerHeight] = useState(0);
-  const [innerWidth, setInnerWidth] = useState(0);
+  const [innerHeight, setInnerHeight] = useState(globalThis.innerHeight+1);
+  const [innerWidth, setInnerWidth] = useState(globalThis.innerWidth+1);
   let socialIconClass = innerHeight > innerWidth ? "h-7 w-7" : "h-10 w-10";
 console.log(innerHeight,innerWidth)
   const setScreenLengths = useCallback(() => {
@@ -35,7 +35,20 @@ console.log(innerHeight,innerWidth)
       <a href="../" className={"w-20 " + (mobile ? "mt-0" : "")}>
         <Image src={Logo} layout="" objectFit="contain" />
       </a>
-
+      <div
+        className={
+          "w-[200px] relative flex items-center justify-end mr-5 " +
+          (mobile ? "" : "hidden")
+        }
+      >
+        <div className="ml-7 absolute">
+          <ConnectButton
+            stateTrans={props.stateTrans}
+            stateTransSet={props.stateTransSet}
+          />
+        </div>
+      </div>
+      
       <div
         className={
           "flex text-[#74d9ff] font-bold uppercase items-center space-x-5 " +
@@ -67,19 +80,7 @@ console.log(innerHeight,innerWidth)
           <Image src={instagramLogo} layout="" objectFit="contain" />
         </a>
       </div>
-      <div
-        className={
-          "w-[200px] relative flex items-center justify-end mr-5 " +
-          (mobile ? "" : "hidden")
-        }
-      >
-        <div className="ml-7 absolute">
-          <ConnectButton
-            stateTrans={props.stateTrans}
-            stateTransSet={props.stateTransSet}
-          />
-        </div>
-      </div>
+
       <div className={mobile ? "basis-full h-0" : "hidden"}></div>
       <div
         className={
@@ -125,7 +126,7 @@ console.log(innerHeight,innerWidth)
           </div>
         </div>
         <Link href="/vault">Vault</Link>
-        <div className="text-[#AAA]">OGs</div>
+        <Link href="/ogs">OGs</Link>
         <div className="text-[#AAA]">Guilds</div>
         <div className="dropdown">
           <a>Metaverse</a>    

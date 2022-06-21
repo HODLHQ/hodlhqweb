@@ -6,7 +6,7 @@ import Link from "next/link";
 import NFTCard from "components/WeBrew3/NFTCard";
 const Vault = (props) => {
     const [pagestate, pagestateSet] = useState(0);
-    const [innerSize, setInnerSize] = useState([0,0]);
+    const [innerSize, setInnerSize] = useState([globalThis.innerHeight+1,globalThis.innerWidth+1]);
     
     const setScreenLengths = useCallback(() => {
         setInnerSize([globalThis.innerHeight,globalThis.innerWidth]);
@@ -24,7 +24,7 @@ const Vault = (props) => {
     let imageWidth = "100%"
     let imageClass = "rounded-[25px] imageGallery"
     let titleStyle = "titleC text-[30px] mr-3 ml-3 mb-3"
-    let heightCard = "20vh"
+    let heightCard = "30"
     console.log("render")
   return (
     <div className="all flex w-full inset-0 ">
@@ -35,12 +35,13 @@ const Vault = (props) => {
       
       <div className="w-full container m-0 flex flex-col">
         <Navbar stateTrans={pagestate} stateTransSet={pagestateSet} />
-        <div className="flex justify-start flex-wrap m-10 ">
+        <div className={"flex justify-start flex-wrap mr-10 mb-10 mt-10 " +
+        (mobile ? "ml-5" : "ml-10")}>
             <div className={titleStyle}>Lands</div>
             <div className="basis-full"></div>
             <NFTCard 
             content="https://img.seadn.io/files/70a343f9d0b039af2a7f0ca11a578263.jpg"
-            link="https://opensea.io/assets/ethereum/0xb7be4001bff2c5f4a61dd2435e4c9a19d8d12343/1"
+            link="https://opensea.io/assets/ethereum/0x34d85c9cdeb23fa97cb08333b511ac86e1c4e258/77701"
             creator="Otherdeed for Otherside"
             name="#77701"
             height={mobile ? heightCard : undefined}
