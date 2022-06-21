@@ -38,7 +38,7 @@ console.log(innerHeight,innerWidth)
       </a>
       <div
         className={
-          "w-[125px] relative flex items-center justify-end mr-5 " +
+          "w-[115px] relative flex items-center justify-end mr-5 " +
           (mobile ? "" : "hidden")
         }
       >
