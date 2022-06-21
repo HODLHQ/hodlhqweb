@@ -36,7 +36,7 @@ const OGs = (props) => {
       
       <div className="w-full container m-0 flex flex-col">
         <Navbar stateTrans={pagestate} stateTransSet={pagestateSet} />
-            <div className={"flex justify-start flex-wrap mr-10 mb-10 mt-5 " + (mobile ? " ml-5" : "ml-10")}>
+            <div className={"flex justify-start flex-wrap mb-10 mt-5 " + (mobile ? "mr-3 ml-5" : "ml-10 mr-10")}>
             <div className={titleStyle+" mb-5 text-[30px]"}>OGs</div>
             <div className="basis-full"></div>
             <div className="flex mb-10 justify-evenlty">
