@@ -58,63 +58,63 @@ const OGs = (props) => {
             <div className="basis-full"></div>
             <OGCard 
             id={1}
-            size={mobile ? "25" : "30"}
+            size={mobile ? "15" : "30"}
             />
             <OGCard 
             id={2}
-            size={mobile ? "25" : "30"}
+            size={mobile ? "15" : "30"}
             />
             <OGCard 
             id={3}
-            size={mobile ? "25" : "30"}
+            size={mobile ? "15" : "30"}
             />
             <OGCard 
             id={4}
-            size={mobile ? "25" : "30"}
+            size={mobile ? "15" : "30"}
             />
             <OGCard 
             id={5}
-            size={mobile ? "25" : "30"}
+            size={mobile ? "15" : "30"}
             />
             <OGCard 
             id={6}
-            size={mobile ? "25" : "30"}
+            size={mobile ? "15" : "30"}
             />
             <OGCard 
             id={7}
-            size={mobile ? "25" : "30"}
+            size={mobile ? "15" : "30"}
             />
             <OGCard 
             id={8}
-            size={mobile ? "25" : "30"}
+            size={mobile ? "15" : "30"}
             />
             <OGCard 
             id={9}
-            size={mobile ? "25" : "30"}
+            size={mobile ? "15" : "30"}
             />
             <OGCard 
             id={10}
-            size={mobile ? "25" : "30"}
+            size={mobile ? "15" : "30"}
             />
             <OGCard 
             id={11}
-            size={mobile ? "25" : "30"}
+            size={mobile ? "15" : "30"}
             />
             <OGCard 
             id={12}
-            size={mobile ? "25" : "30"}
+            size={mobile ? "15" : "30"}
             />
             <OGCard 
             id={13}
-            size={mobile ? "25" : "30"}
+            size={mobile ? "15" : "30"}
             />
             <OGCard 
             id={14}
-            size={mobile ? "25" : "30"}
+            size={mobile ? "15" : "30"}
             />
             <OGCard 
             id={15}
-            size={mobile ? "25" : "30"}
+            size={mobile ? "15" : "30"}
             />
         </div>
       </div>
