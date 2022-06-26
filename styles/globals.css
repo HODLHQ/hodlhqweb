@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 html,body{
+  transition: 0.25s;
   margin: 0;
   padding: 0;
   -webkit-touch-callout: none; /* iOS Safari */
@@ -50,8 +51,8 @@ html,body{
 .dropdown-content {
   display: none;
   position: absolute;
-  transition: 0.25s;
-  min-width: 170px;
+  
+  min-width: 200px;
   padding: 10px 0px;
   z-index: 50;
 
@@ -59,10 +60,16 @@ html,body{
 
 .dropdown-content > a{
   padding: 3px 0px;
+  
 }
 
 .dropdown:hover .dropdown-content{
   display: block;
+  background-color: #00202c;
+  padding-left: 10px;
+  margin-left: -40px;
+  border-radius: 20px;
+  transition: 0.25s;
 }
 .dropdown-content:hover{
   display: block;

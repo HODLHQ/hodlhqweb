@@ -30,10 +30,10 @@ const OGCard = (props) => {
         border: "4px solid #ffffff"
     }}>
         <div className="h-[80%] mt-3 mb-2 ml-3 mr-3">
-            <a href={props.nolink != undefined ? "" : "og/"+pagestate[0]}  target="_blank"
+            <a href={props.nolink != undefined ? "" : (props.link != undefined ? props.link : "https://opensea.io/assets/matic/0x9cd35964358247217339be23110d9f676dfb496c/"+props.id)}  target="_blank"
           rel="noreferrer"><img src={props.image != undefined ? props.image : pagestate[1]} className="h-[100%] rounded-[13px]"></img></a>
         </div>
-        <div style={{fontSize:  0.07* parseInt(size) +"vh"}} className={"value mr-2 ml-2"}>{props.name != undefined ? props.name : pagestate[0]}</div>
+        <div style={{fontSize:  0.07* parseInt(size) +"vh"}} className={"value mr-2 ml-2"}>{(props.id < 10 ? "00" : "0")+props.id+"-"+(props.name != undefined ? props.name : pagestate[0])}</div>
     </div>
     )
  }  

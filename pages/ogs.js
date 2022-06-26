@@ -39,7 +39,7 @@ const OGs = (props) => {
             <div className={"flex justify-start flex-wrap mb-10 mt-5 " + (mobile ? "mr-3 ml-5" : "ml-10 mr-10")}>
             <div className={titleStyle+" mb-5 text-[30px]"}>OGs</div>
             <div className="basis-full"></div>
-            <div className="flex mb-10 justify-evenlty">
+            <div className="flex mb-[15vh] justify-evenlty">
               <div className={titleStyle+" text-[10px]"}>OG&apos;s are members of the web3 community that took it upon themselves to support the HQ and those within it.<br/> Currently you can only get this rank by buying our 1 of 100 DCL hat that comes with a physical version,<br/> or by earning it by buidling!</div>
               <div className="relative ml-10">
                 <div className={(mobile ? "h-[15vh] w-[15vh]" : "absolute h-[20vh] w-[20vh]") } style={{
@@ -59,7 +59,7 @@ const OGs = (props) => {
             <OGCard 
             id={1}
             name={"HODLCEO"}
-            image={"https://ipfs.io/ipfs/QmNeax2bfLmqBQziXA7zA7UvH8NQKjRFKEA2j2ZdHearBb/hodlceo.jpg"}
+            image={"https://lh3.googleusercontent.com/pWO8zb9vbAiEzXbVPnmKs6jFxDkdFJjvYMbhvqsTDId4limIUL4PWNUYRoM-BAEGrY3cdORMaS7Cm31cwWgNN38O8TsEYVeZDKpvBg=w600"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
@@ -71,7 +71,7 @@ const OGs = (props) => {
             <OGCard 
             id={3}
             name={"MetaGing"}
-            image={"https://ipfs.io/ipfs/QmbfuMdX9qiMmKVcDiWmQHYg6sk5yfmoAh7fYbQcvWd9gd/4316.png"}
+            image={"https://lh3.googleusercontent.com/ftk-IDBr7WfAu-jBoG58dSn_DijuECvqihDmApcgCSOaJkVyC6aeDjikLMKQ1JpUu2kA5e_OOlwjzXF8UuU8Lwlm2aihi3jx_CyNgw=w600"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
@@ -95,13 +95,13 @@ const OGs = (props) => {
             <OGCard 
             id={7}
             name={"DewmOne"}
-            image={"https://ipfs.io/ipfs/QmNeax2bfLmqBQziXA7zA7UvH8NQKjRFKEA2j2ZdHearBb/dewm.jpg"}
+            image={"https://lh3.googleusercontent.com/HVERBiSU3yFKu-LMROwmp95rv-oM44hqjaQrMpgbDmFQQjfVv-X6ZHB4dTRBB77jTsmbRBGtkiZ6Xm8oJuJELqopx1fGHB3N6p1Iag=w600"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
             id={8}
             name={"xCryptoBro"}
-            image={"https://ipfs.io/ipfs/QmNeax2bfLmqBQziXA7zA7UvH8NQKjRFKEA2j2ZdHearBb/xcryptobro.jpg"}
+            image={"https://lh3.googleusercontent.com/cWGbocYHsGMyHwSTd8qxnwAqJtsi8JVIU_lgadWbgrGRoClgqpstPsDCTRDKtLsub1Yi1RqyLCfhuJotyovQG1Ku2MdZWka5S7aStA=w600"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
@@ -136,10 +136,13 @@ const OGs = (props) => {
             />
             <OGCard 
             id={14}
+            image={"https://lh3.googleusercontent.com/i59Y1L4Oj1nHWJPrhR9_PkCUKWKVkvnCE8p6ezvJ8Zo4nBrkL5Y5hnTEt2QOSRqUlrHGqFFeKDRqvZlYwdiAvbvmyksBBWMv9q_UUA=w600"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
             id={15}
+            link={"og/Boboch"}
+            image={"https://lh3.googleusercontent.com/1PcB8LylzLqq59oq3p0y6UDTX8wIOeDDIOF3AB6_Z0pJkLlrNwEr7c52rdvgQ8ZgPWsRG4t97ECjz4TzBDgmAlODpzVmYQFHZ1IMiSM=w600"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 

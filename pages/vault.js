@@ -183,38 +183,59 @@ const Vault = (props) => {
             name="dontcloneme.eth"
             height={mobile ? heightCard : undefined}
             />
-            {/*
+            
             <div className="basis-full"></div>
             <div className={titleStyle}>Music</div>
             <div className="basis-full"></div>
             <NFTCard 
-            content=""
-            link=""
-            creator=""
-            name=""
+            content="https://tokens.gala.games/images/gala-music/gala-music/snoop-dogg-and-steve-aoki-present-alpha-doggz/super-freak.gif"
+            link="https://opensea.io/assets/ethereum/0xc36cf0cfcb5d905b8b513860db0cfe63f6cf9f5c/282094082177457986211137549560935847297024"
+            creator="Town Star"
+            name="Super Freak"
             height={mobile ? heightCard : undefined}
             />
             <NFTCard 
-            content=""
-            link=""
-            creator=""
-            name=""
+            content="vault/dance.png"
+            link="https://opensea.io/assets/ethereum/0x208a40d3d8e4d438d95e0647a2e4e0d78e6525b5/0"
+            creator="Steve Aoki "
+            name="Piss On the Dance Floor"
             height={mobile ? heightCard : undefined}
             />
             <NFTCard 
-            content=""
-            link=""
-            creator=""
-            name=""
+            content="vault/time.png"
+            link="https://opensea.io/assets/ethereum/0x208a40d3d8e4d438d95e0647a2e4e0d78e6525b5/0"
+            creator="TIMEPieces x Timbaland"
+            name="Universal Love"
             height={mobile ? heightCard : undefined}
             />
             <NFTCard 
-            content=""
-            link=""
-            creator=""
-            name=""
+            content="vault/feel.png"
+            link="https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/101324149589609765444097150160926508741381014360825123442161062352923616346612"
+            creator="Snoop Dogg ft. October London"
+            name="Feel the Rhythm"
             height={mobile ? heightCard : undefined}
-  />*/}
+            />
+            <NFTCard 
+            content="vault/genesis.gif"
+            link="https://opensea.io/assets/ethereum/0x332b3e3569ca93318166677165fa4bd9a2563f7a/121"
+            creator="Kindred Spirits"
+            name="Genesis Pass #121"
+            height={mobile ? heightCard : undefined}
+            />
+            <NFTCard 
+            content="vault/high.png"
+            link="https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/101324149589609765444097150160926508741381014360825123442161062350724593091060"
+            creator="Snoop Dogg"
+            name="High"
+            height={mobile ? heightCard : undefined}
+            />
+            <NFTCard 
+            content="vault/punk.png"
+            link="https://opensea.io/assets/matic/0x2953399124f0cbb46d2cbacd8a89cf0599974963/101324149589609765444097150160926508741381014360825123442161062404600662851717"
+            creator="Champ Medici + Big We"
+            name="She Bought a Cryptopunk"
+            height={mobile ? heightCard : undefined}
+            />
         </div>
       </div>
     </div>

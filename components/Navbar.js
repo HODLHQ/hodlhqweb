@@ -91,15 +91,11 @@ console.log(innerHeight,innerWidth)
             : "")
         }
       >
-        <Link href="/gallery">Gallery</Link>
 
-        <a target="_blank" rel="noreferrer" href="https://hodlhq.io">
-          Shop
-        </a>
         <div className="dropdown">
           <a>Collections</a>    
           <div className={"dropdown-content "  +
-        (mobile ? "mt-9" : "")}>
+        (mobile ? "" : "")}>
             <a target="_blank" rel="noreferrer" href="https://coolxclones.xyz">
               COOL X CLONES
             </a>
@@ -126,9 +122,12 @@ console.log(innerHeight,innerWidth)
             <br />
           </div>
         </div>
+        <a target="_blank" rel="noreferrer" href="https://hodlhq.io">
+          Shop
+        </a>
         <Link href="/vault">Vault</Link>
         <Link href="/ogs">OGs</Link>
-        <div className="text-[#AAA]">Guilds</div>
+        <Link href="/guild">Guilds</Link>
         <div className="dropdown">
           <a>Metaverse</a>    
           <div className="dropdown-content">
@@ -153,6 +152,7 @@ console.log(innerHeight,innerWidth)
             </a>
           </div>
         </div>
+        <Link href="/gallery">Gallery</Link>
         <Link href="/dashboard">Dashboard</Link>
         {/*<div>Dashboard</div>*/}
       </div>

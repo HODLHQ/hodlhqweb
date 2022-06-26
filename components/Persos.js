@@ -15,8 +15,8 @@ const Persos = () => {
   },[])
 
   return (
-    <div className={`z-20 ${innerHeight > innerWidth ? "w-full" : "w-8/12"} m-auto flex-1 flex justify-center items-end`}>
-      <Image src={Team} layout="" objectFit="contain" />
+    <div className={`z-20 ${innerHeight > innerWidth ? "w-full" : "w-11/12"} m-auto flex-1 flex justify-center items-end`}>
+      <img src={"team.png"} className="w-full h-auto" ></img>
     </div>
   );
 };
