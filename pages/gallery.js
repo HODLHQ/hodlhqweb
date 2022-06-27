@@ -4,7 +4,7 @@ import Image from "next/image";
 import {useState, useEffect} from "react";
 const Gallery = (props) => {
     const [pagestate, pagestateSet] = useState(0);
-    let imageCard = "h-[30vh] pr-10 mb-10 w-auto"
+    let imageCard = "h-[30vh] pr-10 mb-10"
     let imageWidth = "100%"
     let imageClass = "rounded-[25px] imageGallery"
   return (

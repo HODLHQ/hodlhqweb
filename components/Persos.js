@@ -21,8 +21,9 @@ const Persos = () => {
   return (
     <div className={`z-20 ${mobile ? "w-[400vw] fixed" : "w-11/12"} m-auto flex-1 flex justify-center items-end`} style={mobile ? {
       bottom:0,
-      left: "-164vw"
-     } : {}}>
+      left: "-164vw",
+      pointerEvents: "none"
+     } : {pointerEvents: "none"}}>
       <img src={"team.png"} className={(mobile ? "w-full h-auto" : "w-full h-auto")}></img>
     </div>
   );

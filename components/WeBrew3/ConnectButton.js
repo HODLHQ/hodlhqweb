@@ -2,6 +2,7 @@ import {useState, useEffect, Component} from "react";
 import Web3 from "web3";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Link from "next/link";
 class ConnectButton extends Component {
   constructor(props) {
     super(props);
@@ -50,9 +51,18 @@ class ConnectButton extends Component {
     let connectText = this.props.stateTrans == 0 ? "CONNECT WALLET" : "DISCONNECT"
 
     return(
-      <div>
-      <ToastContainer position="bottom-left" theme={"dark"} />
+      <div className="dropdown">
+          <div>
+        <ToastContainer position="bottom-left" theme={"dark"} />
         <button className="web3button whitespace-nowrap text-[#74d9ff] font-bold uppercase" onClick={this.props.stateTrans == 0 ? this.Connect : this.Disconnect}>{connectText}</button>
+        </div>   
+        {this.connectText == "DISCONNECT" ? 
+        <div className={"dropdown-content min-w-[120px] ml-0"}>
+             <Link href="/dashboard">
+              DASHBOARD
+            </Link>
+            <br />
+          </div> : <></>}
         </div>
     )
   }

@@ -3,6 +3,8 @@ import Logo from "public/logo.png";
 import twitterLogo from "public/icons/twitter.png";
 import discordLogo from "public/icons/discord.png";
 import instagramLogo from "public/icons/instagram.png";
+import merchLogo from "public/icons/merch.png";
+import galleryLogo from "public/icons/gallery.png";
 import ConnectButton from "components/WeBrew3/ConnectButton";
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
@@ -80,6 +82,21 @@ console.log(innerHeight,innerWidth)
         >
           <Image src={instagramLogo} layout="" objectFit="contain" />
         </a>
+        <a
+          href="https://hodlhq.io"
+          target="_blank"
+          rel="noreferrer"
+          className={socialIconClass}
+        >
+          <Image src={merchLogo} layout="" objectFit="contain" />
+        </a>
+        <Link
+          href="/gallery"
+          rel="noreferrer"
+         
+        >
+          <a  className={socialIconClass}><Image src={galleryLogo} layout="" objectFit="contain" /></a>
+        </Link>
       </div>
 
       <div className={mobile ? "basis-full h-0" : "hidden"}></div>
@@ -91,10 +108,17 @@ console.log(innerHeight,innerWidth)
             : "")
         }
       >
-
+        
+        <a target="_blank"
+              rel="noreferrer" href="https://coolxclones.xyz" className="h-[60px] m-3">
+                <img className="rounded-[20px]" style={{
+                  border: "#fff solid 3px"
+                }} src="/cxc.jpg"></img>
+                </a>
+                <div className={mobile ? "basis-full h-0" : "hidden"}></div>
         <div className="dropdown">
           <a>Collections</a>    
-          <div className={"dropdown-content "  +
+          <div className={"dropdown-content min-w-[200px] ml-[-40px] "  +
         (mobile ? "" : "")}>
             <a target="_blank" rel="noreferrer" href="https://coolxclones.xyz">
               COOL X CLONES
@@ -122,15 +146,12 @@ console.log(innerHeight,innerWidth)
             <br />
           </div>
         </div>
-        <a target="_blank" rel="noreferrer" href="https://hodlhq.io">
-          Shop
-        </a>
         <Link href="/vault">Vault</Link>
         <Link href="/ogs">OGs</Link>
         <Link href="/guild">Guilds</Link>
         <div className="dropdown">
           <a>Metaverse</a>    
-          <div className="dropdown-content">
+          <div className="dropdown-content min-w-[170px] ml-[-40px]">
             <a target="_blank" rel="noreferrer" href="https://play.decentraland.org/?realm=dg&position=149%2C-72&island=I1w67w">
               Decentraland
             </a>
@@ -152,8 +173,7 @@ console.log(innerHeight,innerWidth)
             </a>
           </div>
         </div>
-        <Link href="/gallery">Gallery</Link>
-        <Link href="/dashboard">Dashboard</Link>
+        {/*<Link href="/dashboard">Dashboard</Link>*/}
         {/*<div>Dashboard</div>*/}
       </div>
       <div

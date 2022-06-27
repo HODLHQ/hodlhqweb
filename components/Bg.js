@@ -13,7 +13,7 @@ const Bg = (props) => {
   },[])
   return (
     <div
-      className="-z-10 fixed inset-0 font-bold flex text-[#fff] opacity-50 justify-center items-center mb-[20vh]"
+      className="-z-10 fixed inset-0 font-bold flex text-[#fff] opacity-50 justify-center items-center mb-[20vh] hover:text-[#0295cd]"
       style={{
         fontSize: innerHeight > innerWidth ? "10vw" : "25vh",
       }}

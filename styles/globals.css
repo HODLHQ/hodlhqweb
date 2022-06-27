@@ -14,7 +14,7 @@ html,body{
           user-select: none;
 }
 .all{
-  background: url("../public/diamonds.png") center center / cover no-repeat, #0a0300;
+  background: url("../public/diamonds.gif") center center / cover no-repeat, #0a0300;
 }
 
 .container{
@@ -52,7 +52,7 @@ html,body{
   display: none;
   position: absolute;
   
-  min-width: 200px;
+ 
   padding: 10px 0px;
   z-index: 50;
 
@@ -65,11 +65,14 @@ html,body{
 
 .dropdown:hover .dropdown-content{
   display: block;
-  background-color: #00202c;
+  background-color: #0295cd;
+  color: #fff;
   padding-left: 10px;
-  margin-left: -40px;
+ 
   border-radius: 20px;
   transition: 0.25s;
+  font-weight: bold;
+  align-items: center;
 }
 .dropdown-content:hover{
   display: block;
