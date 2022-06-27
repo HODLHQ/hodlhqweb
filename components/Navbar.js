@@ -30,7 +30,7 @@ console.log(innerHeight,innerWidth)
     <div
       className={
         "flex h-24 justify-between items-center " +
-        (mobile ? "flex-wrap pb-0 mb-20" : "")
+        (mobile ? "flex-wrap pb-0 mb-20 mt-5" : "")
       }
     >
       <a href="../" className={"w-20 " + (mobile ? "" : "")}>
