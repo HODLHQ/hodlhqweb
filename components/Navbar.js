@@ -29,7 +29,7 @@ console.log(innerHeight,innerWidth)
   return (
     <div
       className={
-        "flex h-24 justify-between items-center " +
+        "flex h-24 justify-between items-center z-30 " +
         (mobile ? "flex-wrap pb-0 mb-20 mt-5" : "")
       }
     >

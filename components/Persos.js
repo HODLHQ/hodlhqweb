@@ -19,9 +19,9 @@ const Persos = () => {
     }, []);
   let mobile = 1134 > innerSize[1] || innerSize[0] > innerSize[1];
   return (
-    <div className={`z-20 ${mobile ? "w-[300vw] fixed" : "w-11/12"} m-auto flex-1 flex justify-center items-end`} style={mobile ? {
+    <div className={`z-20 ${mobile ? "w-[500vw] fixed" : "w-11/12"} m-auto flex-1 flex justify-center items-end`} style={mobile ? {
       bottom:0,
-      left: "-113vw"
+      left: "-220vw"
      } : {}}>
       <img src={"team.png"} className={(mobile ? "w-full h-auto" : "w-full h-auto")}></img>
     </div>
