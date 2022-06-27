@@ -52,8 +52,8 @@ console.log(innerHeight,innerWidth)
       
       <div
         className={
-          "flex text-[#74d9ff] font-bold uppercase items-center space-x-5 " +
-          (mobile ? "ml-1" : "ml-5")
+          "flex text-[#74d9ff] font-bold uppercase justify-center items-center space-x-5 " +
+          (mobile ? "ml-1 flex-1 mt-1" : "ml-5")
         }
       >
         <a

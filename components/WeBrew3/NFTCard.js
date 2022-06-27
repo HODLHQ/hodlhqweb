@@ -13,7 +13,7 @@ const NFTCard = (props) => {
     }}>
         <div className="h-[60%] mt-3 mb-2 ml-3 mr-3">
             <a href={props.link}  target="_blank"
-          rel="noreferrer"><img src={props.content} className="h-[100%] rounded-[13px]"></img></a>
+          rel="noreferrer"><img src={props.content} className="h-[100%] w-auto rounded-[13px]"></img></a>
         </div>
         <div style={{fontSize:  0.07* parseInt(heightT) +"vh"}} className={"value mr-2 ml-2"}>{props.name}</div>
         <div style={{fontSize:  0.07* parseInt(heightT) +"vh"}} className={"value mr-2 ml-2 mb-2"}>{props.creator}</div>
