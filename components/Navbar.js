@@ -33,7 +33,7 @@ console.log(innerHeight,innerWidth)
         (mobile ? "flex-wrap pb-0 mb-20" : "")
       }
     >
-      <a href="../" className={"w-20 " + (mobile ? "mt-0" : "")}>
+      <a href="../" className={"w-20 " + (mobile ? "" : "")}>
         <Image src={Logo} layout="" objectFit="contain" />
       </a>
       <div

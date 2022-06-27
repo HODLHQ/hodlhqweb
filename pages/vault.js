@@ -24,7 +24,7 @@ const Vault = (props) => {
     let imageWidth = "100%"
     let imageClass = "rounded-[25px] imageGallery"
     let titleStyle = "titleC text-[30px] mr-3 ml-3 mb-3"
-    let heightCard = "30"
+    let heightCard = "25"
     console.log("render")
   return (
     <div className="all flex w-full inset-0 ">

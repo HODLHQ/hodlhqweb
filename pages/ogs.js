@@ -39,7 +39,7 @@ const OGs = (props) => {
             <div className={"flex justify-start flex-wrap mb-10 mt-5 " + (mobile ? "mr-3 ml-5" : "ml-10 mr-10")}>
             <div className={titleStyle+" mb-5 text-[30px]"}>OGs</div>
             <div className="basis-full"></div>
-            <div className="flex mb-[15vh] justify-evenlty">
+            <div className={"flex justify-evenlty " + (mobile ? "mb-5" : "mb-[15vh]")}>
               <div className={titleStyle+" text-[10px]"}>OG&apos;s are members of the web3 community that took it upon themselves to support the HQ and those within it.<br/> Currently you can only get this rank by buying our 1 of 100 DCL hat that comes with a physical version,<br/> or by earning it by buidling!</div>
               <div className="relative ml-10">
                 <div className={(mobile ? "h-[15vh] w-[15vh]" : "absolute h-[20vh] w-[20vh]") } style={{
