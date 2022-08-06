@@ -16,7 +16,7 @@ const Stream = (props) => {
       
       <div className="w-full container m-0 flex flex-col min-h-[100vh] ">
         <Navbar stateTrans={pagestate} stateTransSet={pagestateSet} />
-        <div className="flex flex-1 justify-around m-10 ">
+        <div className="flex flex-1 justify-around m-10  ">
             <iframe src="https://player.twitch.tv/?channel=hodlceo&parent=www.hodlhq.xyz" frameBorder="0" allowFullScreen="true" scrolling="no" height="100%" width="100%"></iframe>
         </div>
       </div>
