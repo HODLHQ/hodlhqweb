@@ -25,7 +25,7 @@ useEffect(() => {
       <Head>
         <title>HODLHQ</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content="In HODL we trust ! " />
+        <meta name="description" content="In HODL we trust !!" />
       </Head>
       <Bg />
       <div className="w-full container m-auto h-full flex flex-col">
