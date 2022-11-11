@@ -65,7 +65,7 @@ const OGs = (props) => {
             <OGCard 
             id={2}
             name={"ArmenTsatou"}
-            image={"https://lh3.googleusercontent.com/FK38wYeHbIrql79VCVsuIe6qUJ90nNX2Pl39smU2pfi1G6wGIwqQy2aQSWDSASFKHz7PJ2c9s9Z6hffoZOoZ3icULCZQeCrcoZ-zylU=w600"}
+            image={"https://pbs.twimg.com/profile_images/1590135867250823168/CKXiBibH_400x400.jpg"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
@@ -77,7 +77,7 @@ const OGs = (props) => {
             <OGCard 
             id={4}
             name={"BigMouth"}
-            image={"https://pbs.twimg.com/profile_images/1514623036045017106/YLoOStsz_400x400.jpg"}
+            image={"https://pbs.twimg.com/profile_images/1590872047139315712/5eRpXxld_400x400.jpg"}
             size={mobile ? "20" : "30"}
             />
             <OGCard 
@@ -149,6 +149,18 @@ const OGs = (props) => {
             id={16}
             name={"DreamDCL"}
             image={"https://lh3.googleusercontent.com/aN45UYTibCySoVTnBFS5XsoCxD7pwSrVArIUQGC6aOVwnBRwnZxAIHGBM2pkbfVydwGV6sG0nIbYQ_k3ImHACv58BEovcFbayUPW=w600"}
+            size={mobile ? "20" : "30"}
+            />
+            <OGCard 
+            id={17}
+            name={"Sinistyre"}
+            image={"https://cdn.discordapp.com/attachments/994989017588318288/1040440813898956881/unknown.png"}
+            size={mobile ? "20" : "30"}
+            />
+            <OGCard 
+            id={18}
+            name={"Anubis"}
+            image={"https://cdn.discordapp.com/attachments/994989017588318288/1040440501272334396/anubisfinal.jpeg"}
             size={mobile ? "20" : "30"}
             />
         </div>

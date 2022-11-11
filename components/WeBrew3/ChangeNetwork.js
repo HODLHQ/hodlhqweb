@@ -1,6 +1,5 @@
 import Web3 from "web3";
 
-//STOP CALLING THIS FROM NOWHERE I FUCKING HATE REACT
 const changeToMatic = () => {
     return new Promise((resolve, reject) => {
       if (globalThis.web3js != undefined) {
